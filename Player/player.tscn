@@ -3,8 +3,9 @@
 [ext_resource type="Script" path="res://Player/player.gd" id="1_1o36i"]
 [ext_resource type="Texture2D" uid="uid://b5wsmtqqj5gtc" path="res://Player/monkey_guy_smol.png" id="2_ksncs"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_005os"]
-size = Vector2(22, 10)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5t5ku"]
+radius = 6.0
+height = 16.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_1o36i")
@@ -14,5 +15,6 @@ texture_filter = 1
 texture = ExtResource("2_ksncs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4)
-shape = SubResource("RectangleShape2D_005os")
+position = Vector2(0, 3)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_5t5ku")
