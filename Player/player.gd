@@ -7,9 +7,9 @@ enum state {
 
 @export var speed = 200
 var current_state = state.IDLE
-var direction = Vector2.ZERO
+var direction
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	match current_state:
 		state.IDLE: idle()
 		state.MOVING: moving()
@@ -31,10 +31,13 @@ func moving():
 		direction.y += 1
 	if Input.is_action_pressed("move_left"):
 		direction.x += -1
-		$Sprite2D.flip_h = false
 	if Input.is_action_pressed("move_right"):
 		direction.x += 1
+	
+	if direction.x == 1:
 		$Sprite2D.flip_h = true
+	elif direction.x == -1:
+		$Sprite2D.flip_h = false
 	
 	velocity = direction.normalized() * speed
 	
