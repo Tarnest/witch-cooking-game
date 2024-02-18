@@ -2,7 +2,7 @@ extends CanvasLayer
 
 @export var object: PanelContainer
 
-func _on_open(container):
+func _on_open():
 	object.visible = true
 
 

@@ -1,12 +1,11 @@
 extends Node2D
 
-signal open_menu(container)
+signal open_menu
 
-@export var container: String
 var object_closed = true
 
 func open():
-	open_menu.emit(container)
+	open_menu.emit()
 	object_closed = false
 
 
