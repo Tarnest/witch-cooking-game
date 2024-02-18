@@ -7,8 +7,11 @@ enum state {
 }
 
 @export var speed = 200
+@export var ray_length = 15
+@onready var ray = $RayCast2D
 var current_state = state.IDLE
 var direction = Vector2.ZERO
+var last_direction: Vector2
 
 func _physics_process(delta):
 	match current_state:
@@ -16,15 +19,18 @@ func _physics_process(delta):
 		state.MOVING: moving()
 		state.PAUSE: pause()
 	
+	ray_direction()
 	
-	var collision = move_and_collide(velocity * delta)
-	if collision:
-		print("Yippee")
-		var body = collision.get_collider()
-		if body.is_in_group("Shelf"):
-			body.call("open")
-			print("Yippee!!!")
-			
+	if ray.is_colliding():
+		var collider = ray.get_collider()
+		if collider.is_in_group("Shelf") && Input.is_action_just_pressed("open_menu"):
+			collider.call("open")
+			change_state(state.PAUSE)
+	
+	move_and_slide()
+
+func ray_direction():
+	ray.target_position = last_direction.normalized() * ray_length
 
 func change_state(new_state):
 	current_state = new_state
@@ -52,6 +58,9 @@ func moving():
 		$Sprite2D.flip_h = true
 	elif direction.x == -1:
 		$Sprite2D.flip_h = false
+	
+	if direction != Vector2.ZERO:
+		last_direction = direction
 	
 	velocity = direction.normalized() * speed
 
