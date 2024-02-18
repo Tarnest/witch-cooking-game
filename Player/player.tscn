@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdsmsbxodmlt8"]
+
+[ext_resource type="Script" path="res://Player/player.gd" id="1_1o36i"]
+[ext_resource type="Texture2D" uid="uid://b5wsmtqqj5gtc" path="res://Player/monkey_guy_smol.png" id="2_ksncs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_005os"]
+size = Vector2(22, 10)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_1o36i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_ksncs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_005os")
