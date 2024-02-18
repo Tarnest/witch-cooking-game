@@ -11,7 +11,7 @@ enum state {
 @onready var ray = $RayCast2D
 var current_state = state.IDLE
 var direction = Vector2.ZERO
-var last_direction: Vector2
+var last_direction = Vector2.LEFT
 
 func _physics_process(delta):
 	match current_state:
@@ -19,21 +19,25 @@ func _physics_process(delta):
 		state.MOVING: moving()
 		state.PAUSE: pause()
 	
-	ray_direction()
+	# get ray direction based on player last direction while moving
+	ray.target_position = last_direction.normalized() * ray_length
 	
 	if ray.is_colliding():
 		var collider = ray.get_collider()
-		if collider.is_in_group("Shelf") && Input.is_action_just_pressed("open_menu"):
+		if collider.is_in_group("Container") && Input.is_action_just_pressed("open_menu"):
 			collider.call("open")
 			change_state(state.PAUSE)
+		
+		if collider.is_in_group("Container") && collider.object_closed:
+			if current_state != state.MOVING:
+				change_state(state.IDLE)
+	
 	
 	move_and_slide()
 
-func ray_direction():
-	ray.target_position = last_direction.normalized() * ray_length
-
 func change_state(new_state):
-	current_state = new_state
+	if current_state != new_state:
+		current_state = new_state
 
 func idle():
 	if Input.is_action_pressed("moving"):
