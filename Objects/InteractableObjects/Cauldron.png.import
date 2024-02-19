@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://im2tv7jpv33e"
-path="res://.godot/imported/eyeball_2.png-92f986b2126f6d4ed52364f62e82f87c.ctex"
+uid="uid://xnr13paoswfd"
+path="res://.godot/imported/Cauldron.png-6f6839284f38f2c63d27d47513a6d791.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Objects/eyeball_2.png"
-dest_files=["res://.godot/imported/eyeball_2.png-92f986b2126f6d4ed52364f62e82f87c.ctex"]
+source_file="res://Objects/InteractableObjects/Cauldron.png"
+dest_files=["res://.godot/imported/Cauldron.png-6f6839284f38f2c63d27d47513a6d791.ctex"]
 
 [params]
 
