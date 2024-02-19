@@ -38,6 +38,8 @@ func _physics_process(delta):
 	# TODO: Remove after test
 	if Input.is_action_just_pressed("left_click"):
 		inventory.insert(item)
+	if Input.is_action_just_pressed("open_menu"):
+		inventory.remove(item)
 	
 	move_and_slide()
 

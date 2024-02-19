@@ -15,3 +15,16 @@ func insert(item: InventoryItem):
 			empty_slots[0].item = item
 			empty_slots[0].amount = 1
 	update.emit()
+
+func remove(item: InventoryItem):	
+	var item_slots = slots.filter(func(slot): return slot.item == item)
+	
+	if item_slots.is_empty():
+		return
+	
+	item_slots[0].amount -= 1
+	
+	if item_slots[0].amount == 0:
+		item_slots[0].item = null
+	
+	update.emit()
