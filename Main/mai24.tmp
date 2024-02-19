@@ -168,7 +168,6 @@ metadata/_edit_lock_ = true
 script = ExtResource("6_hq43h")
 
 [node name="PanelContainer" type="PanelContainer" parent="Cauldron/CanvasLayer"]
-visible = false
 offset_left = 1100.0
 offset_top = 25.0
 offset_right = 1900.0
@@ -232,7 +231,6 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-columns = 5
 
 [node name="UISlot1" parent="Cauldron/CanvasLayer/PanelContainer/VBoxContainer/ToCraft/GridContainer" instance=ExtResource("8_ghtnn")]
 layout_mode = 2
