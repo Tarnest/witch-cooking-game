@@ -26,3 +26,4 @@ amount = 0
 [resource]
 script = ExtResource("1_pao7w")
 slots = Array[ExtResource("2_nvjk3")]([SubResource("Resource_u100v"), SubResource("Resource_eo22q"), SubResource("Resource_1em6u"), SubResource("Resource_dvlti"), SubResource("Resource_1mpgc")])
+max_items = 3

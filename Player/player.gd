@@ -8,7 +8,7 @@ enum state {
 
 @export var speed = 200
 @export var ray_length = 15
-@export var aadinventory: Inventory
+@export var inventory: Inventory
 @onready var ray = $RayCast2D
 var current_state = state.IDLE
 var direction = Vector2.ZERO
