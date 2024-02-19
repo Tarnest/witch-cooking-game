@@ -9,6 +9,8 @@ enum state {
 @export var speed = 200
 @export var ray_length = 15
 @export var inventory: Inventory
+#TODO: Remove After Test
+@export var item: InventoryItem
 @onready var ray = $RayCast2D
 var current_state = state.IDLE
 var direction = Vector2.ZERO
@@ -33,6 +35,9 @@ func _physics_process(delta):
 			if current_state != state.MOVING:
 				change_state(state.IDLE)
 	
+	# TODO: Remove after test
+	if Input.is_action_just_pressed("left_click"):
+		inventory.insert(item)
 	
 	move_and_slide()
 

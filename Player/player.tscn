@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cdsmsbxodmlt8"]
+[gd_scene load_steps=9 format=3 uid="uid://cdsmsbxodmlt8"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_1o36i"]
 [ext_resource type="Resource" uid="uid://dvi5ti6oyb02v" path="res://Player/player_inventory.tres" id="2_8x842"]
 [ext_resource type="Texture2D" uid="uid://b5wsmtqqj5gtc" path="res://Player/monkey_guy_smol.png" id="2_ksncs"]
+[ext_resource type="Resource" uid="uid://bmcv40mlchqsg" path="res://Objects/GUIObjects/Eyeball/eyeball.tres" id="3_o32es"]
 [ext_resource type="Script" path="res://Inventory/inventory_ui.gd" id="4_nnp42"]
 [ext_resource type="PackedScene" uid="uid://wh0rancmu48s" path="res://Inventory/inventory_ui_slot.tscn" id="5_wln5r"]
 
@@ -15,6 +16,7 @@ height = 16.0
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_1o36i")
 inventory = ExtResource("2_8x842")
+item = ExtResource("3_o32es")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
