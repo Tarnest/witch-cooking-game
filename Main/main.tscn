@@ -194,4 +194,5 @@ speed = 150
 zoom = Vector2(6, 6)
 
 [connection signal="open_menu" from="Shelf" to="Shelf/CanvasLayer" method="_on_open"]
+[connection signal="pressed" from="Shelf/CanvasLayer/Shelf/VBoxContainer/Close" to="Shelf" method="_on_close_pressed"]
 [connection signal="pressed" from="Shelf/CanvasLayer/Shelf/VBoxContainer/Close" to="Shelf/CanvasLayer" method="_on_close_pressed"]

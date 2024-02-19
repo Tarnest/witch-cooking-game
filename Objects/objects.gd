@@ -4,6 +4,7 @@ signal open_menu
 
 var object_closed = true
 
+
 func open():
 	open_menu.emit()
 	object_closed = false

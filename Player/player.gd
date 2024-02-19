@@ -42,7 +42,7 @@ func change_state(new_state):
 func idle():
 	if Input.is_action_pressed("moving"):
 		change_state(state.MOVING)
-	
+
 func moving():
 	if !Input.is_action_pressed("moving"):
 		change_state(state.IDLE)
@@ -70,7 +70,3 @@ func moving():
 
 func pause():
 	velocity = Vector2.ZERO
-	
-	# TODO: MAKE SURE TO CHNAGE THIS, JUST A PLACEHOLDER
-	if Input.is_action_just_pressed("left_click"):
-		change_state(state.IDLE)
