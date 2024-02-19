@@ -16,4 +16,6 @@ func _on_close_pressed():
 
 
 func _on_panel_container_button_clicked(item_name):
-	player_inventory.check_item(item_name)
+	var item = player_inventory.get_item(item_name)
+	if item != null:
+		player_inventory.insert(item)

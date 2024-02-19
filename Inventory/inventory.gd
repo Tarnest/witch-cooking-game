@@ -32,7 +32,14 @@ func remove(item: InventoryItem):
 	
 	update.emit()
 
-func check_item(item_name: String):
+func get_item(item_name: String) -> InventoryItem:
 	for item in possible_items:
 		if item.name == item_name:
-			insert(item)
+			return item
+	return null
+
+func clear():
+	for slot in slots:
+		slot.item = null
+		slot.amount = 0
+	update.emit()

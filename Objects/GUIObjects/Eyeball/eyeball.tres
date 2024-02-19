@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://bmcv40mlchqsg"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://bmcv40mlchqsg"]
 
 [ext_resource type="Script" path="res://Inventory/inventory_item.gd" id="1_v7fx5"]
+[ext_resource type="Texture2D" uid="uid://im2tv7jpv33e" path="res://Objects/GUIObjects/Eyeball/eyeball_2.png" id="1_wwjau"]
 [ext_resource type="Texture2D" uid="uid://dk685qnxk8nwa" path="res://Objects/GUIObjects/Eyeball/eyeball.png" id="2_qroxg"]
 
 [resource]
 script = ExtResource("1_v7fx5")
 name = "eyeball"
 texture = ExtResource("2_qroxg")
+hover_texture = ExtResource("1_wwjau")

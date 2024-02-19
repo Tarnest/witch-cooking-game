@@ -1,14 +1,17 @@
-[gd_scene load_steps=14 format=3 uid="uid://k6sf5hm387vs"]
+[gd_scene load_steps=17 format=3 uid="uid://k6sf5hm387vs"]
 
 [ext_resource type="Script" path="res://Main/main.gd" id="1_ughty"]
 [ext_resource type="Texture2D" uid="uid://d1rh6mau1dyi5" path="res://Assets/FloorAndWalls/store_tilemap.png" id="2_vkgnn"]
 [ext_resource type="PackedScene" uid="uid://cdsmsbxodmlt8" path="res://Player/player.tscn" id="3_dwiu7"]
+[ext_resource type="Script" path="res://crafting_objects.gd" id="3_jfxsh"]
 [ext_resource type="Resource" uid="uid://dvi5ti6oyb02v" path="res://Player/player_inventory.tres" id="4_2wowl"]
-[ext_resource type="Script" path="res://Objects/objects.gd" id="4_qnvxi"]
+[ext_resource type="Script" path="res://Objects/shelf_objects.gd" id="4_qnvxi"]
 [ext_resource type="Texture2D" uid="uid://dk685qnxk8nwa" path="res://Objects/GUIObjects/Eyeball/eyeball.png" id="6_a08v1"]
 [ext_resource type="Script" path="res://Main/UIController.gd" id="6_hq43h"]
-[ext_resource type="Script" path="res://Main/cauldron_panel.gd" id="6_ks1wo"]
+[ext_resource type="Script" path="res://shelf_panel.gd" id="6_ks1wo"]
 [ext_resource type="Texture2D" uid="uid://im2tv7jpv33e" path="res://Objects/GUIObjects/Eyeball/eyeball_2.png" id="7_3cn6j"]
+[ext_resource type="Script" path="res://crafting_panel.gd" id="7_8tn31"]
+[ext_resource type="PackedScene" uid="uid://bu128t15480m6" path="res://crafting_ui_slot.tscn" id="8_602y7"]
 [ext_resource type="Texture2D" uid="uid://bi4i68nugg2u1" path="res://Objects/InteractableObjects/Cauldron.png" id="8_agjks"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mailf"]
@@ -150,8 +153,7 @@ layer_0/tile_data = PackedInt32Array(589826, 0, 0, 655362, 0, 0, 720898, 0, 0, 7
 texture_filter = 1
 position = Vector2(409, 166)
 collision_layer = 4
-script = ExtResource("4_qnvxi")
-player_inventory = ExtResource("4_2wowl")
+script = ExtResource("3_jfxsh")
 
 [node name="Sprite2D" type="Sprite2D" parent="Cauldron"]
 texture = ExtResource("8_agjks")
@@ -170,20 +172,88 @@ offset_left = 1096.0
 offset_top = 25.0
 offset_right = 1889.0
 offset_bottom = 1053.0
-script = ExtResource("6_ks1wo")
+script = ExtResource("7_8tn31")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Cauldron/CanvasLayer/PanelContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Cauldron/CanvasLayer/PanelContainer/VBoxContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Cauldron/CanvasLayer/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 
-[node name="Eyeball" type="TextureButton" parent="Cauldron/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="GridContainer" type="GridContainer" parent="Cauldron/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_right = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 5
+
+[node name="UISlot" parent="Cauldron/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer" instance=ExtResource("8_602y7")]
+layout_mode = 2
+
+[node name="UISlot2" parent="Cauldron/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer" instance=ExtResource("8_602y7")]
+layout_mode = 2
+
+[node name="UISlot3" parent="Cauldron/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer" instance=ExtResource("8_602y7")]
+layout_mode = 2
+
+[node name="UISlot4" parent="Cauldron/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer" instance=ExtResource("8_602y7")]
+layout_mode = 2
+
+[node name="UISlot5" parent="Cauldron/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer" instance=ExtResource("8_602y7")]
+layout_mode = 2
+
+[node name="Close" type="Button" parent="Cauldron/CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Close"
+
+[node name="Shelf" type="StaticBody2D" parent="." groups=["Container"]]
+texture_filter = 1
+position = Vector2(244, 166)
+collision_layer = 4
+script = ExtResource("4_qnvxi")
+player_inventory = ExtResource("4_2wowl")
+
+[node name="Sprite2D" type="Sprite2D" parent="Shelf"]
+texture = ExtResource("8_agjks")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shelf"]
+shape = SubResource("CapsuleShape2D_acigl")
+metadata/_edit_lock_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Shelf"]
+script = ExtResource("6_hq43h")
+
+[node name="PanelContainer" type="PanelContainer" parent="Shelf/CanvasLayer"]
+visible = false
+offset_left = 1096.0
+offset_top = 25.0
+offset_right = 1889.0
+offset_bottom = 1053.0
+script = ExtResource("6_ks1wo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Shelf/CanvasLayer/PanelContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Shelf/CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Eyeball" type="TextureButton" parent="Shelf/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("6_a08v1")
 texture_hover = ExtResource("7_3cn6j")
 
-[node name="Close" type="Button" parent="Cauldron/CanvasLayer/PanelContainer/VBoxContainer"]
+[node name="Close" type="Button" parent="Shelf/CanvasLayer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 text = "Close"
@@ -197,7 +267,15 @@ speed = 150
 zoom = Vector2(6, 6)
 
 [connection signal="open_menu" from="Cauldron" to="Cauldron/CanvasLayer" method="_on_open"]
-[connection signal="button_clicked" from="Cauldron/CanvasLayer/PanelContainer" to="Cauldron" method="_on_panel_container_button_clicked"]
-[connection signal="pressed" from="Cauldron/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/Eyeball" to="Cauldron/CanvasLayer/PanelContainer" method="_on_eyeball_pressed"]
+[connection signal="use" from="Cauldron/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer/UISlot" to="Cauldron" method="use_item"]
+[connection signal="use" from="Cauldron/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer/UISlot2" to="Cauldron" method="use_item"]
+[connection signal="use" from="Cauldron/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer/UISlot3" to="Cauldron" method="use_item"]
+[connection signal="use" from="Cauldron/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer/UISlot4" to="Cauldron" method="use_item"]
+[connection signal="use" from="Cauldron/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer/UISlot5" to="Cauldron" method="use_item"]
 [connection signal="pressed" from="Cauldron/CanvasLayer/PanelContainer/VBoxContainer/Close" to="Cauldron" method="_on_close_pressed"]
 [connection signal="pressed" from="Cauldron/CanvasLayer/PanelContainer/VBoxContainer/Close" to="Cauldron/CanvasLayer" method="_on_close_pressed"]
+[connection signal="open_menu" from="Shelf" to="Shelf/CanvasLayer" method="_on_open"]
+[connection signal="button_clicked" from="Shelf/CanvasLayer/PanelContainer" to="Shelf" method="_on_panel_container_button_clicked"]
+[connection signal="pressed" from="Shelf/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/Eyeball" to="Shelf/CanvasLayer/PanelContainer" method="_on_eyeball_pressed"]
+[connection signal="pressed" from="Shelf/CanvasLayer/PanelContainer/VBoxContainer/Close" to="Shelf" method="_on_close_pressed"]
+[connection signal="pressed" from="Shelf/CanvasLayer/PanelContainer/VBoxContainer/Close" to="Shelf/CanvasLayer" method="_on_close_pressed"]
