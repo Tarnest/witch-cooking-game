@@ -8,6 +8,7 @@ enum state {
 
 @export var speed = 200
 @export var ray_length = 15
+@export var aadinventory: Inventory
 @onready var ray = $RayCast2D
 var current_state = state.IDLE
 var direction = Vector2.ZERO
@@ -31,7 +32,6 @@ func _physics_process(delta):
 		if collider.is_in_group("Container") && collider.object_closed:
 			if current_state != state.MOVING:
 				change_state(state.IDLE)
-	
 	
 	move_and_slide()
 

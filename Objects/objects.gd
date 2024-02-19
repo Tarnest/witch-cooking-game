@@ -12,3 +12,4 @@ func open():
 
 func _on_close_pressed():
 	object_closed = true
+
