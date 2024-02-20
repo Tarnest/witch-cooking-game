@@ -5,8 +5,14 @@ signal add_item_to_pot(item: InventoryItem)
 
 @onready var player_inventory = preload("res://Player/player_inventory.tres")
 @onready var slot_size = $CanvasLayer/PanelContainer/VBoxContainer/ToCraft/GridContainer.get_children().size()
+
+@onready var red_potion = preload("res://Objects/InventoryItems/RedPotion/red_potion.tres")
+@onready var recipes: Array[Recipe] = [red_potion.recipe]
+@onready var recipe_items: Array[InventoryItem] = [red_potion]
+
 var object_closed = true
 var items_in_pot: Array[InventoryItem]
+
 
 
 func open():
@@ -33,5 +39,20 @@ func add_to_pot(item: InventoryItem):
 
 
 func _on_confirm_pressed():
+	var item: InventoryItem = check_recipe()
+	if item != null:
+		player_inventory.insert(item)
+	
 	for i in range(items_in_pot.size()):
 		items_in_pot[i] = null
+
+
+func check_recipe() -> InventoryItem:
+	var recipe: Recipe = Recipe.new()
+	recipe.set_ingredients(items_in_pot)
+	
+	var recipe_name = recipe.get_recipe_name(recipes)
+	for item in recipe_items:
+		if item.name == recipe_name:
+			return item
+	return null
