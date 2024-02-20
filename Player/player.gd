@@ -11,6 +11,7 @@ enum state {
 @export var inventory: Inventory
 @onready var ray = $RayCast2D
 @onready var inventoryUI = $InventoryUI
+@onready var animation_player = $AnimationPlayer
 var current_state = state.IDLE
 var direction = Vector2.ZERO
 var last_direction = Vector2.LEFT
@@ -43,7 +44,8 @@ func change_state(new_state):
 func idle():
 	if Input.is_action_pressed("moving"):
 		change_state(state.MOVING)
-
+	play_animation("idle", last_direction)
+	
 func moving():
 	if !Input.is_action_pressed("moving"):
 		change_state(state.IDLE)
@@ -64,6 +66,8 @@ func moving():
 	elif direction.x == -1:
 		$Sprite2D.flip_h = false
 	
+	play_animation("run", direction)
+	
 	if direction != Vector2.ZERO:
 		last_direction = direction
 	
@@ -71,3 +75,22 @@ func moving():
 
 func pause():
 	velocity = Vector2.ZERO
+	play_animation("idle", last_direction)
+
+func play_animation(type, dir):
+	var animation: String
+	var up_right = Vector2(1, -1)
+	var up_left = Vector2(-1, -1)
+	var down_right = Vector2(1, 1)
+	var down_left = Vector2(-1, 1)
+	match dir:
+		Vector2.UP: animation = type + "_" + "north"
+		Vector2.DOWN: animation = type + "_" + "south"
+		Vector2.LEFT: animation = type + "_" + "west"
+		Vector2.RIGHT: animation = type + "_" + "west"
+		up_right: animation = type + "_" + "northwest"
+		up_left: animation = type + "_" + "northwest"
+		down_right: animation = type + "_" + "southwest"
+		down_left: animation = type + "_" + "southwest"
+	
+	animation_player.play(animation)
