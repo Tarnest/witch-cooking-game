@@ -30,3 +30,8 @@ func add_to_pot(item: InventoryItem):
 	if items_in_pot.size() < slot_size:
 		items_in_pot.append(item)
 		add_item_to_pot.emit(items_in_pot)
+
+
+func _on_confirm_pressed():
+	for i in range(items_in_pot.size()):
+		items_in_pot[i] = null
