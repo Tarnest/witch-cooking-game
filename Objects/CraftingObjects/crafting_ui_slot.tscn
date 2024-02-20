@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bu128t15480m6"]
 
-[ext_resource type="Script" path="res://crafting_ui_slot.gd" id="1_hs50u"]
+[ext_resource type="Script" path="res://Objects/CraftingObjects/crafting_ui_slot.gd" id="1_hs50u"]
 
 [node name="UISlot" type="TextureButton"]
 script = ExtResource("1_hs50u")
