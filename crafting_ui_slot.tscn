@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://bu128t15480m6"]
+
+[ext_resource type="Script" path="res://crafting_ui_slot.gd" id="1_hs50u"]
+
+[node name="UISlot" type="TextureButton"]
+script = ExtResource("1_hs50u")
+
+[node name="Amount" type="Label" parent="."]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = 6.0
+offset_right = 23.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 2
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

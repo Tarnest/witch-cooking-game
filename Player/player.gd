@@ -10,6 +10,7 @@ enum state {
 @export var ray_length = 15
 @export var inventory: Inventory
 @onready var ray = $RayCast2D
+@onready var inventoryUI = $InventoryUI
 var current_state = state.IDLE
 var direction = Vector2.ZERO
 var last_direction = Vector2.LEFT

@@ -168,7 +168,6 @@ metadata/_edit_lock_ = true
 script = ExtResource("6_hq43h")
 
 [node name="PanelContainer" type="PanelContainer" parent="Cauldron/CanvasLayer"]
-visible = false
 offset_left = 1100.0
 offset_top = 25.0
 offset_right = 1900.0
@@ -232,7 +231,6 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-columns = 5
 
 [node name="UISlot1" parent="Cauldron/CanvasLayer/PanelContainer/VBoxContainer/ToCraft/GridContainer" instance=ExtResource("8_ghtnn")]
 layout_mode = 2
@@ -326,8 +324,6 @@ zoom = Vector2(6, 6)
 [connection signal="use" from="Cauldron/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer/UISlot5" to="Cauldron" method="use_item"]
 [connection signal="pressed" from="Cauldron/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/Close" to="Cauldron" method="_on_close_pressed"]
 [connection signal="pressed" from="Cauldron/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/Close" to="Cauldron/CanvasLayer" method="_on_close_pressed"]
-[connection signal="pressed" from="Cauldron/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/Confirm" to="Cauldron" method="_on_confirm_pressed"]
-[connection signal="pressed" from="Cauldron/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/Confirm" to="Cauldron/CanvasLayer/PanelContainer" method="_on_confirm_pressed"]
 [connection signal="open_menu" from="Shelf" to="Shelf/CanvasLayer" method="_on_open"]
 [connection signal="button_clicked" from="Shelf/CanvasLayer/PanelContainer" to="Shelf" method="_on_panel_container_button_clicked"]
 [connection signal="pressed" from="Shelf/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/Eyeball" to="Shelf/CanvasLayer/PanelContainer" method="_on_eyeball_pressed"]

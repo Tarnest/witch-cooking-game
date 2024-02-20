@@ -5,6 +5,7 @@ signal update
 
 @export var slots: Array[InventorySlot]
 @export var max_items: int = 3
+@export var possible_items: Array[InventoryItem]
 
 func insert(item: InventoryItem):
 	var item_slots = slots.filter(func(slot): return slot.item == item)
@@ -29,4 +30,16 @@ func remove(item: InventoryItem):
 	if item_slots[0].amount == 0:
 		item_slots[0].item = null
 	
+	update.emit()
+
+func get_item(item_name: String) -> InventoryItem:
+	for item in possible_items:
+		if item.name == item_name:
+			return item
+	return null
+
+func clear():
+	for slot in slots:
+		slot.item = null
+		slot.amount = 0
 	update.emit()
