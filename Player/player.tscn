@@ -1,26 +1,144 @@
-[gd_scene load_steps=8 format=3 uid="uid://cdsmsbxodmlt8"]
+[gd_scene load_steps=15 format=3 uid="uid://cdsmsbxodmlt8"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_1o36i"]
 [ext_resource type="Resource" uid="uid://dvi5ti6oyb02v" path="res://Player/player_inventory.tres" id="2_8x842"]
-[ext_resource type="Texture2D" uid="uid://b5wsmtqqj5gtc" path="res://Player/monkey_guy_smol.png" id="2_ksncs"]
 [ext_resource type="Script" path="res://Inventory/UI/inventory_ui.gd" id="3_25yq8"]
+[ext_resource type="Texture2D" uid="uid://dnngr3nbqde3j" path="res://Player/wymark_sprite_sheet.png" id="3_g5pf6"]
 [ext_resource type="Texture2D" uid="uid://dskscrvdr8avw" path="res://Inventory/UI/inventory_bar.png" id="4_ienr7"]
 [ext_resource type="PackedScene" uid="uid://wh0rancmu48s" path="res://Inventory/UI/inventory_ui_slot.tscn" id="5_sja05"]
+
+[sub_resource type="Animation" id="Animation_tlitk"]
+resource_name = "idle_north"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [3, 14, 15, 16]
+}
+
+[sub_resource type="Animation" id="Animation_mcpij"]
+resource_name = "idle_eat"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_l8vtl"]
+resource_name = "idle_northwest"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 17, 18, 19]
+}
+
+[sub_resource type="Animation" id="Animation_13xqk"]
+resource_name = "idle_south"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [2, 11, 12, 13]
+}
+
+[sub_resource type="Animation" id="Animation_lpun7"]
+resource_name = "idle_southwest"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 8, 9, 10]
+}
+
+[sub_resource type="Animation" id="Animation_ef4jb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xlmh5"]
+_data = {
+"RESET": SubResource("Animation_ef4jb"),
+"idle_north": SubResource("Animation_tlitk"),
+"idle_northwest": SubResource("Animation_l8vtl"),
+"idle_south": SubResource("Animation_13xqk"),
+"idle_southwest": SubResource("Animation_lpun7"),
+"idle_west": SubResource("Animation_mcpij")
+}
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5t5ku"]
 radius = 6.0
 height = 16.0
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 7
 script = ExtResource("1_1o36i")
 inventory = ExtResource("2_8x842")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_ksncs")
+texture = ExtResource("3_g5pf6")
+hframes = 45
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xlmh5")
+}
+autoplay = "idle_west"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 3)
+position = Vector2(0, 4)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_5t5ku")
 
