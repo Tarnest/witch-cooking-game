@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://k6sf5hm387vs"]
+[gd_scene load_steps=21 format=3 uid="uid://k6sf5hm387vs"]
 
 [ext_resource type="Script" path="res://Main/main.gd" id="1_ughty"]
 [ext_resource type="Texture2D" uid="uid://d1rh6mau1dyi5" path="res://Assets/FloorAndWalls/store_tilemap.png" id="2_vkgnn"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bi4i68nugg2u1" path="res://Objects/InteractableObjects/Cauldron.png" id="8_agjks"]
 [ext_resource type="PackedScene" uid="uid://do1tx2hywbbsp" path="res://Objects/CraftingObjects/crafting_ui_slot_ready.tscn" id="8_ghtnn"]
 [ext_resource type="Texture2D" uid="uid://crk4kk3qi0h3f" path="res://Objects/InventoryItems/Ruby/ruby.png" id="14_x07f8"]
+[ext_resource type="PackedScene" uid="uid://cbmko36so8gvl" path="res://Customers/BatLady/bat_lady.tscn" id="16_vge7i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mailf"]
 texture = ExtResource("2_vkgnn")
@@ -170,6 +171,12 @@ sources/0 = SubResource("TileSetAtlasSource_mailf")
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_acigl"]
 radius = 12.0
 height = 26.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_jnd2b"]
+vertices = PackedVector2Array(465, -35, 473, 6, 208, 26, 208, -36)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(198, -47, 474, -45, 486, 16, 198, 37)])
+source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ughty")
@@ -357,6 +364,19 @@ speed = 100
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(6, 6)
+
+[node name="BatLady" parent="." instance=ExtResource("16_vge7i")]
+position = Vector2(272, -19)
+scale = Vector2(0.167, 0.167)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="BatLady"]
+path_postprocessing = 1
+debug_enabled = true
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(1, -37)
+navigation_polygon = SubResource("NavigationPolygon_jnd2b")
+metadata/_edit_lock_ = true
 
 [connection signal="add_item_to_pot" from="Cauldron" to="Cauldron/CanvasLayer/PanelContainer" method="_on_cauldron_add_item_to_pot"]
 [connection signal="open_menu" from="Cauldron" to="Cauldron/CanvasLayer" method="_on_open"]
