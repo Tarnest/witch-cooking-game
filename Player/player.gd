@@ -34,6 +34,9 @@ func _physics_process(delta):
 		if collider.is_in_group("Container") && collider.object_closed:
 			if current_state != state.MOVING:
 				change_state(state.IDLE)
+		
+		if collider.is_in_group("Trash") && Input.is_action_just_pressed("open_menu"):
+			inventory.clear()
 	
 	move_and_slide()
 
