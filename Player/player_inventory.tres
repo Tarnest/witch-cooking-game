@@ -1,31 +1,29 @@
-[gd_resource type="Resource" script_class="Inventory" load_steps=9 format=3 uid="uid://dvi5ti6oyb02v"]
+[gd_resource type="Resource" script_class="Inventory" load_steps=8 format=3 uid="uid://dvi5ti6oyb02v"]
 
 [ext_resource type="Script" path="res://Inventory/inventory.gd" id="1_pao7w"]
 [ext_resource type="Script" path="res://Inventory/inventory_slot.gd" id="2_nvjk3"]
-[ext_resource type="Resource" uid="uid://bmcv40mlchqsg" path="res://Objects/GUIObjects/Eyeball/eyeball.tres" id="2_pyo8w"]
 
-[sub_resource type="Resource" id="Resource_u100v"]
+[sub_resource type="Resource" id="Resource_yjc13"]
 script = ExtResource("2_nvjk3")
 amount = 0
 
-[sub_resource type="Resource" id="Resource_eo22q"]
+[sub_resource type="Resource" id="Resource_3gqo2"]
 script = ExtResource("2_nvjk3")
 amount = 0
 
-[sub_resource type="Resource" id="Resource_1em6u"]
+[sub_resource type="Resource" id="Resource_q425c"]
 script = ExtResource("2_nvjk3")
 amount = 0
 
-[sub_resource type="Resource" id="Resource_dvlti"]
+[sub_resource type="Resource" id="Resource_b8267"]
 script = ExtResource("2_nvjk3")
 amount = 0
 
-[sub_resource type="Resource" id="Resource_1mpgc"]
+[sub_resource type="Resource" id="Resource_d80sx"]
 script = ExtResource("2_nvjk3")
 amount = 0
 
 [resource]
 script = ExtResource("1_pao7w")
-slots = Array[ExtResource("2_nvjk3")]([SubResource("Resource_u100v"), SubResource("Resource_eo22q"), SubResource("Resource_1em6u"), SubResource("Resource_dvlti"), SubResource("Resource_1mpgc")])
-max_items = null
-possible_items = Array[Resource("res://Inventory/inventory_item.gd")]([ExtResource("2_pyo8w")])
+slots = Array[ExtResource("2_nvjk3")]([SubResource("Resource_yjc13"), SubResource("Resource_3gqo2"), SubResource("Resource_q425c"), SubResource("Resource_b8267"), SubResource("Resource_d80sx")])
+max_items = 3

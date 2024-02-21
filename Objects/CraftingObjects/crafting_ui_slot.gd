@@ -13,7 +13,8 @@ func update(slot: InventorySlot):
 	else:
 		visible = true
 		texture_normal = slot.item.texture
-		texture_hover = slot.item.hover_texture
+		if slot.item.hover_texture != null:
+			texture_hover = slot.item.hover_texture
 		current_slot = slot
 		
 		if slot.amount > 1:

@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://Objects/CraftingObjects/crafting_ui_slot_ready.gd" id="1_sctce"]
 
 [node name="UISlot" type="Panel"]
-self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(50, 50)
 script = ExtResource("1_sctce")
 

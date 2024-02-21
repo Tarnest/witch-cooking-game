@@ -5,7 +5,12 @@ signal update
 
 @export var slots: Array[InventorySlot]
 @export var max_items: int = 3
-@export var possible_items: Array[InventoryItem]
+
+var eyeball = preload("res://Objects/InventoryItems/Eyeball/eyeball.tres")
+var ruby = preload("res://Objects/InventoryItems/Ruby/ruby.tres")
+var red_potion = preload("res://Objects/InventoryItems/RedPotion/red_potion.tres")
+
+var possible_items: Array[InventoryItem] = [eyeball, ruby, red_potion]
 
 func insert(item: InventoryItem):
 	var item_slots = slots.filter(func(slot): return slot.item == item)
