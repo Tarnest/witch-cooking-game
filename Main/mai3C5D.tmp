@@ -266,23 +266,18 @@ grow_vertical = 2
 columns = 5
 
 [node name="UISlot1" parent="Cauldron/CanvasLayer/PanelContainer/VBoxContainer/ToCraft/GridContainer" instance=ExtResource("8_ghtnn")]
-visible = false
 layout_mode = 2
 
 [node name="UISlot2" parent="Cauldron/CanvasLayer/PanelContainer/VBoxContainer/ToCraft/GridContainer" instance=ExtResource("8_ghtnn")]
-visible = false
 layout_mode = 2
 
 [node name="UISlot3" parent="Cauldron/CanvasLayer/PanelContainer/VBoxContainer/ToCraft/GridContainer" instance=ExtResource("8_ghtnn")]
-visible = false
 layout_mode = 2
 
 [node name="UISlot4" parent="Cauldron/CanvasLayer/PanelContainer/VBoxContainer/ToCraft/GridContainer" instance=ExtResource("8_ghtnn")]
-visible = false
 layout_mode = 2
 
 [node name="UISlot5" parent="Cauldron/CanvasLayer/PanelContainer/VBoxContainer/ToCraft/GridContainer" instance=ExtResource("8_ghtnn")]
-visible = false
 layout_mode = 2
 
 [node name="WhiteSpace2" type="Control" parent="Cauldron/CanvasLayer/PanelContainer/VBoxContainer"]

@@ -11,7 +11,7 @@ signal add_item_to_pot(item: InventoryItem)
 @onready var recipe_items: Array[InventoryItem] = [red_potion]
 
 var object_closed = true
-var items_in_pot: Array[InventoryItem]
+var items_in_pot: Dictionary
 
 
 
@@ -27,15 +27,23 @@ func _on_close_pressed():
 func use_item(item_name):
 	var item = player_inventory.get_item(item_name)
 	# check if pot is full
-	if item != null && items_in_pot.size() < slot_size:
+	var values = items_in_pot.values()
+	
+	var sum: int = 0
+	for value in values:
+		sum += value
+	
+	if item != null && sum < slot_size:
 		player_inventory.remove(item)
 		add_to_pot(item)
 
 
 func add_to_pot(item: InventoryItem):
-	if items_in_pot.size() < slot_size:
-		items_in_pot.append(item)
-		add_item_to_pot.emit(items_in_pot)
+	if items_in_pot.has(item):
+		items_in_pot[item] += 1
+	else:
+		items_in_pot[item] = 1
+	add_item_to_pot.emit(items_in_pot)
 
 
 func _on_confirm_pressed():
@@ -43,8 +51,7 @@ func _on_confirm_pressed():
 	if item != null:
 		player_inventory.insert(item)
 	
-	for i in range(items_in_pot.size()):
-		items_in_pot[i] = null
+	items_in_pot.clear()
 
 
 func check_recipe() -> InventoryItem:
