@@ -138,6 +138,7 @@ _data = {
 size = Vector2(20, 19)
 
 [node name="BatLady" type="CharacterBody2D" groups=["Customer"]]
+y_sort_enabled = true
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_db7f1")
