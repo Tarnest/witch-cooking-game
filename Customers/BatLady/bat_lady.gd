@@ -8,6 +8,8 @@ enum State {
 	LEAVING
 }
 
+#delete this
+
 @export var properties = Customer.new()
 @export var ray_length = 20
 @onready var navigation: NavigationAgent2D = $NavigationAgent2D
