@@ -7,14 +7,14 @@
 [sub_resource type="Resource" id="Resource_b1qyt"]
 script = ExtResource("2_ash76")
 recipes = Array[Resource("res://Inventory/recipe.gd")]([])
-speed = 50
+speed = 25
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dlmk1"]
-size = Vector2(18, 21)
+size = Vector2(18, 28)
 
 [node name="BatLady" type="CharacterBody2D"]
 collision_layer = 8
-collision_mask = 8
+collision_mask = 0
 script = ExtResource("1_5trwo")
 properties = SubResource("Resource_b1qyt")
 
@@ -25,5 +25,13 @@ hframes = 24
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 9.5)
+position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_dlmk1")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+exclude_parent = false
+target_position = Vector2(0, 30)
+collision_mask = 8
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
