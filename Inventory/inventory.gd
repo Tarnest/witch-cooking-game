@@ -48,3 +48,6 @@ func clear():
 		slot.item = null
 		slot.amount = 0
 	update.emit()
+
+func is_empty() -> bool:
+	return slots.size()
