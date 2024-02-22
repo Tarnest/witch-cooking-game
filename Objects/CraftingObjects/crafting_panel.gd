@@ -25,7 +25,7 @@ func _on_confirm_pressed():
 		items_to_craft[i].update(items_in_pot[i])
 
 func dict_to_arr(dict: Dictionary) -> Array:
-	var arr: Array = []
+	var arr: Array
 	for item in dict:
 		for i in range(dict[item]):
 			arr.append(item)
