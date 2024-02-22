@@ -367,7 +367,6 @@ zoom = Vector2(6, 6)
 
 [node name="BatLady" parent="." instance=ExtResource("16_vge7i")]
 position = Vector2(272, -19)
-scale = Vector2(0.167, 0.167)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="BatLady"]
 path_postprocessing = 1

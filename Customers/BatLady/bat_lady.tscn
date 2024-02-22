@@ -10,7 +10,7 @@ recipes = Array[Resource("res://Inventory/recipe.gd")]([])
 speed = 50
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dlmk1"]
-size = Vector2(154, 364)
+size = Vector2(18, 21)
 
 [node name="BatLady" type="CharacterBody2D"]
 collision_layer = 8
@@ -21,11 +21,9 @@ properties = SubResource("Resource_b1qyt")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("2_8apep")
-hframes = 8
+hframes = 24
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(-3, -1)
+position = Vector2(0, 9.5)
 shape = SubResource("RectangleShape2D_dlmk1")
-metadata/_edit_lock_ = true
