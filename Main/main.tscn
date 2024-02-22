@@ -176,9 +176,9 @@ height = 26.0
 height = 22.0
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_6mie0"]
-vertices = PackedVector2Array(476, -50, 476, 24, 224, 24, 228, -75, 451, -75)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(218, -85, 455, -85, 486, -55, 487, 34, 214, 35)])
+vertices = PackedVector2Array(446, 22, 224, 24, 228, -75, 449, -75, 459, -53, 459, -52, 483, -11)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(0, 5, 6)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(218, -85, 455, -85, 468, -57, 496, -10, 450, 32, 214, 35)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="Main" type="Node2D"]
@@ -391,7 +391,6 @@ position = Vector2(353, -32)
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 position = Vector2(-11, -1)
 navigation_polygon = SubResource("NavigationPolygon_6mie0")
-metadata/_edit_lock_ = true
 
 [connection signal="add_item_to_pot" from="Cauldron" to="Cauldron/CanvasLayer/PanelContainer" method="_on_cauldron_add_item_to_pot"]
 [connection signal="open_menu" from="Cauldron" to="Cauldron/CanvasLayer" method="_on_open"]
