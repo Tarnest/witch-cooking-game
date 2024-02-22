@@ -135,10 +135,9 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i54uh"]
-size = Vector2(20, 19)
+size = Vector2(20, 25)
 
 [node name="BatLady" type="CharacterBody2D" groups=["Customer"]]
-y_sort_enabled = true
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_db7f1")
@@ -155,7 +154,7 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 9.5)
+position = Vector2(0, 6.5)
 shape = SubResource("RectangleShape2D_i54uh")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]

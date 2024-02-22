@@ -14,6 +14,7 @@ enum State {
 @onready var ray = $RayCast2D
 @onready var animation = $AnimationPlayer
 @onready var sprite = $Sprite2D
+@onready var collision_shape = $CollisionShape2D
 var accel = 7
 var current_state: State = State.MOVING_TO_ORDER
 var direction: Vector2
@@ -116,6 +117,7 @@ func leaving():
 	navigation.target_position = leave_position
 	
 	ray.enabled = false
+	collision_shape.disabled = true
 	
 	sprite.flip_h = true
 	

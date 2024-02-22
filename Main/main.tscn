@@ -237,7 +237,7 @@ texture = ExtResource("3_ue7fd")
 centered = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Counter"]
-polygon = PackedVector2Array(0, 41, 0, 8, 185, 8, 185, 41, 166, 41, 166, 15, 19, 15, 19, 41)
+polygon = PackedVector2Array(0, 41, 0, 8, 185, 8, 185, 41, 166, 41, 166, 17, 19, 17, 19, 41)
 
 [node name="Cauldron" type="StaticBody2D" parent="." groups=["Container"]]
 texture_filter = 1
