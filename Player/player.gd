@@ -34,7 +34,10 @@ func _physics_process(_delta):
 		if collider.is_in_group("Container") && collider.object_closed:
 			if current_state != state.MOVING:
 				change_state(state.IDLE)
-	
+		
+		if collider.is_in_group("Customer") && Input.is_action_just_pressed("open_menu"):
+			collider.change_state(collider.State.MOVING_TO_RECEIVE_ORDER)
+		
 	move_and_slide()
 
 func change_state(new_state):

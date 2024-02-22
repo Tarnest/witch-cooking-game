@@ -361,14 +361,17 @@ text = "Close"
 position = Vector2(307, 220)
 collision_mask = 6
 speed = 100
+ray_length = 20
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(6, 6)
 
+[node name="OrderList" type="CanvasLayer" parent="Player"]
+
 [node name="Customers" type="Node2D" parent="."]
 
 [node name="BatLady" parent="Customers" instance=ExtResource("16_vge7i")]
-position = Vector2(453, -32)
+position = Vector2(410, -2)
 
 [node name="BatLady2" parent="Customers" instance=ExtResource("16_vge7i")]
 position = Vector2(321, -34)

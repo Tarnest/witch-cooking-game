@@ -218,6 +218,7 @@ inventory = ExtResource("2_8x842")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
+position = Vector2(0, -3)
 texture = ExtResource("3_g5pf6")
 hframes = 45
 
@@ -228,13 +229,13 @@ libraries = {
 autoplay = "idle_west"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4)
+position = Vector2(0, 1)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_5t5ku")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(-20, 0)
-collision_mask = 4
+collision_mask = 12
 collide_with_areas = true
 
 [node name="InventoryUI" type="CanvasLayer" parent="."]
