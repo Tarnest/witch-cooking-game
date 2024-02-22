@@ -61,7 +61,7 @@ func change_state(new_state):
 		current_state = new_state
 
 func moving_to_order():
-	var waiting_in_line = Vector2(275, -40)
+	var waiting_in_line = Vector2(283, -40)
 	navigation.target_position = waiting_in_line
 	
 	var distance = global_position.distance_to(waiting_in_line)
@@ -75,7 +75,7 @@ func moving_to_order():
 		animation.play("idle_left")
 	
 func waiting_to_order():
-	var counter_position = Vector2(275, -2)
+	var counter_position = Vector2(283, 12)
 	navigation.target_position = counter_position
 	
 	if direction != Vector2.ZERO:
@@ -84,7 +84,7 @@ func waiting_to_order():
 		animation.play("idle_down")
 
 func moving_to_receive_order():
-	var waiting_in_line = Vector2(410, -2)
+	var waiting_in_line = Vector2(410, 12)
 	navigation.target_position = waiting_in_line
 	
 	sprite.flip_h = true
