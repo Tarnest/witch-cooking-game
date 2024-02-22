@@ -16,7 +16,7 @@ var current_state = state.IDLE
 var direction = Vector2.ZERO
 var last_direction = Vector2.LEFT
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	match current_state:
 		state.IDLE: idle()
 		state.MOVING: moving()
@@ -37,7 +37,10 @@ func _physics_process(delta):
 		
 		if collider.is_in_group("Trash") && Input.is_action_just_pressed("open_menu"):
 			inventory.clear()
-	
+		
+		if collider.is_in_group("Customer") && Input.is_action_just_pressed("left_click"):
+			collider.change_state(collider.State.MOVING_TO_RECEIVE_ORDER)
+		
 	move_and_slide()
 
 func change_state(new_state):
@@ -53,7 +56,7 @@ func moving():
 	if !Input.is_action_pressed("moving"):
 		change_state(state.IDLE)
 	
-	var direction = Vector2.ZERO
+	direction = Vector2.ZERO
 	
 	if Input.is_action_pressed("move_up"):
 		direction.y += -1
