@@ -24,7 +24,6 @@ var items_requested: Dictionary
 var accel = 7
 var current_state: State = State.MOVING_TO_ORDER
 var direction: Vector2
-var distance_from_current: Vector2
 
 func _ready():
 	var possible_items: Array[InventoryItem] = []
@@ -33,14 +32,13 @@ func _ready():
 		possible_items.append(player_inventory.get_item(item))
 	
 	var item_amount = randi() % 3 + 1
-	
 	for i in range(item_amount):
 		var rand_num = randi() % possible_items.size() - 1
 		if !items_requested.has(possible_items[rand_num]):
 			items_requested[possible_items[rand_num]] = 1
 		else:
 			items_requested[possible_items[rand_num]] += 1
-
+	
 func _physics_process(delta):
 	match current_state:
 		State.MOVING_TO_ORDER: moving_to_order()
@@ -50,7 +48,7 @@ func _physics_process(delta):
 		State.LEAVING: leaving()
 		_: pass
 	
-	distance_from_current = navigation.target_position - global_position
+	var distance = navigation.target_position - global_position
 	
 	direction = navigation.get_next_path_position() - global_position
 	direction = direction.normalized()
@@ -60,7 +58,7 @@ func _physics_process(delta):
 	if ray.is_colliding():
 		direction = Vector2.ZERO
 	
-	if distance_from_current.length() > 0.5:
+	if distance.length() > 0.5:
 		velocity = velocity.lerp(direction * properties.speed, accel * delta)
 	else:
 		velocity = Vector2.ZERO
@@ -74,19 +72,17 @@ func check_inventory():
 		return
 	
 	for slot in player_inventory.slots:
-		if not slot.item in items_requested:
+		if !items_requested.has(slot.item):
 			continue
 		else:
-			if items_requested[slot.item] >= slot.amount:
-				items_to_remove[slot.item] = slot.amount
+			if slot.amount >= items_requested[slot.item]:
+				items_to_remove[slot.item] = items_requested[slot.item]
 	
 	if items_requested != items_to_remove:
-		print(items_requested)
-		print(items_to_remove)
 		return
 	
 	for item in items_to_remove:
-		for i in range(item.value):
+		for i in range(items_to_remove[item]):
 			player_inventory.remove(item)
 	
 	change_state(State.LEAVING)

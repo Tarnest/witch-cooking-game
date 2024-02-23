@@ -50,4 +50,4 @@ func clear():
 	update.emit()
 
 func is_empty() -> bool:
-	return slots.size()
+	return !slots.size()
