@@ -115,7 +115,7 @@ func waiting_to_order():
 		animation.play("idle_down")
 
 func moving_to_receive_order():
-	var waiting_in_line = Vector2(410, 12)
+	var waiting_in_line = Vector2(390, 12)
 	navigation.target_position = waiting_in_line
 	
 	sprite.flip_h = true

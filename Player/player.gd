@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 signal start_day
+signal end_day
 
 enum state {
 	IDLE,
@@ -20,7 +21,8 @@ enum state {
 var current_state = state.IDLE
 var direction = Vector2.ZERO
 var last_direction = Vector2.LEFT
-var is_moving = false
+var orders_taken = 0
+var max_orders = 3
 
 func _physics_process(_delta):
 	match current_state:
@@ -45,14 +47,19 @@ func _physics_process(_delta):
 			inventory.clear()
 		
 		if collider.is_in_group("Customer") && Input.is_action_just_pressed("open_menu"):
-			if collider.current_state == collider.state.WAITING_TO_ORDER:
+			if collider.current_state == collider.state.WAITING_TO_ORDER && orders_taken < max_orders:
 				collider.change_state(collider.state.MOVING_TO_RECEIVE_ORDER)
+				orders_taken += 1
 			if collider.current_state == collider.state.WAITING_TO_RECEIVE_ORDER:
 				collider.check_inventory()
+				orders_taken -= 1
 		
 		if collider.is_in_group("Bell") && Input.is_action_just_pressed("open_menu"):
 			bell.play()
 			start_day.emit()
+		
+		if collider.is_in_group("Bed") && Input.is_action_just_pressed("open_menu"):
+			end_day.emit()
 		
 	move_and_slide()
 

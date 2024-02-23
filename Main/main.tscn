@@ -443,6 +443,17 @@ position = Vector2(-420, -54)
 stream = ExtResource("17_5pfs5")
 volume_db = -5.621
 
+[node name="Bed" type="StaticBody2D" parent="Objects" groups=["Bed"]]
+position = Vector2(589, 211)
+collision_layer = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Objects/Bed"]
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("16_jyqqd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Bed"]
+shape = SubResource("CircleShape2D_hh8tx")
+
 [node name="Player" parent="." instance=ExtResource("3_dwiu7")]
 z_index = 1
 position = Vector2(307, 220)
@@ -482,5 +493,6 @@ navigation_polygon = SubResource("NavigationPolygon_6mie0")
 [connection signal="pressed" from="Objects/Shelf/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/Ruby" to="Objects/Shelf/CanvasLayer/PanelContainer" method="_on_ruby_pressed"]
 [connection signal="pressed" from="Objects/Shelf/CanvasLayer/PanelContainer/VBoxContainer/Close" to="Objects/Shelf" method="_on_close_pressed"]
 [connection signal="pressed" from="Objects/Shelf/CanvasLayer/PanelContainer/VBoxContainer/Close" to="Objects/Shelf/CanvasLayer" method="_on_close_pressed"]
+[connection signal="end_day" from="Player" to="." method="_on_player_end_day"]
 [connection signal="start_day" from="Player" to="." method="_on_player_start_day"]
 [connection signal="timeout" from="Customers/SpawnTimer" to="." method="_on_spawn_timer_timeout"]
