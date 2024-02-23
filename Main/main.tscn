@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://k6sf5hm387vs"]
+[gd_scene load_steps=26 format=3 uid="uid://k6sf5hm387vs"]
 
 [ext_resource type="Script" path="res://Main/main.gd" id="1_ughty"]
 [ext_resource type="Texture2D" uid="uid://d1rh6mau1dyi5" path="res://Assets/FloorAndWalls/store_tilemap.png" id="2_vkgnn"]
@@ -16,7 +16,9 @@
 [ext_resource type="Texture2D" uid="uid://bi4i68nugg2u1" path="res://Objects/InteractableObjects/Cauldron.png" id="8_agjks"]
 [ext_resource type="PackedScene" uid="uid://do1tx2hywbbsp" path="res://Objects/CraftingObjects/crafting_ui_slot_ready.tscn" id="8_ghtnn"]
 [ext_resource type="Texture2D" uid="uid://crk4kk3qi0h3f" path="res://Objects/InventoryItems/Ruby/ruby.png" id="14_x07f8"]
-[ext_resource type="PackedScene" uid="uid://d1ops2yus6g6f" path="res://Customers/BatLady/bat_lady.tscn" id="16_cliyj"]
+[ext_resource type="Texture2D" uid="uid://c35t3qjuuji32" path="res://icon.svg" id="16_jyqqd"]
+[ext_resource type="AudioStream" uid="uid://mhib2xqy0hq3" path="res://Objects/InteractableObjects/Bell/ding.mp3" id="17_5pfs5"]
+[ext_resource type="Script" path="res://Main/spawner.gd" id="19_aiqr6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mailf"]
 texture = ExtResource("2_vkgnn")
@@ -208,6 +210,8 @@ height = 26.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_csca2"]
 height = 22.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hh8tx"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_6mie0"]
 vertices = PackedVector2Array(446, 22, 224, 24, 228, -75, 449, -75, 459, -53, 459, -52, 483, -11)
@@ -422,6 +426,34 @@ texture = ExtResource("8_agjks")
 position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_csca2")
 
+[node name="Bell" type="StaticBody2D" parent="Objects" groups=["Bell"]]
+z_index = 1
+position = Vector2(420, 54)
+collision_layer = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Objects/Bell"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("16_jyqqd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Bell"]
+shape = SubResource("CircleShape2D_hh8tx")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Objects/Bell"]
+position = Vector2(-420, -54)
+stream = ExtResource("17_5pfs5")
+volume_db = -5.621
+
+[node name="Bed" type="StaticBody2D" parent="Objects" groups=["Bed"]]
+position = Vector2(589, 211)
+collision_layer = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Objects/Bed"]
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("16_jyqqd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Bed"]
+shape = SubResource("CircleShape2D_hh8tx")
+
 [node name="Player" parent="." instance=ExtResource("3_dwiu7")]
 z_index = 1
 position = Vector2(307, 220)
@@ -433,18 +465,17 @@ ray_length = 20
 zoom = Vector2(6, 6)
 
 [node name="Customers" type="Node2D" parent="."]
+script = ExtResource("19_aiqr6")
 
-[node name="BatLady" parent="Customers" instance=ExtResource("16_cliyj")]
-position = Vector2(397, -28)
-
-[node name="BatLady2" parent="Customers" instance=ExtResource("16_cliyj")]
-position = Vector2(283, 10)
+[node name="SpawnTimer" type="Timer" parent="Customers"]
+wait_time = 3.0
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 visible = false
 position = Vector2(-11, -1)
 navigation_polygon = SubResource("NavigationPolygon_6mie0")
 
+[connection signal="spawn_customer" from="." to="Customers" method="_on_spawn_customer"]
 [connection signal="add_item_to_pot" from="Objects/Cauldron" to="Objects/Cauldron/CanvasLayer/PanelContainer" method="_on_cauldron_add_item_to_pot"]
 [connection signal="open_menu" from="Objects/Cauldron" to="Objects/Cauldron/CanvasLayer" method="_on_open"]
 [connection signal="use" from="Objects/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer/UISlot" to="Objects/Cauldron" method="use_item"]
@@ -462,3 +493,6 @@ navigation_polygon = SubResource("NavigationPolygon_6mie0")
 [connection signal="pressed" from="Objects/Shelf/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/Ruby" to="Objects/Shelf/CanvasLayer/PanelContainer" method="_on_ruby_pressed"]
 [connection signal="pressed" from="Objects/Shelf/CanvasLayer/PanelContainer/VBoxContainer/Close" to="Objects/Shelf" method="_on_close_pressed"]
 [connection signal="pressed" from="Objects/Shelf/CanvasLayer/PanelContainer/VBoxContainer/Close" to="Objects/Shelf/CanvasLayer" method="_on_close_pressed"]
+[connection signal="end_day" from="Player" to="." method="_on_player_end_day"]
+[connection signal="start_day" from="Player" to="." method="_on_player_start_day"]
+[connection signal="timeout" from="Customers/SpawnTimer" to="." method="_on_spawn_timer_timeout"]
