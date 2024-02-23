@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://k6sf5hm387vs"]
+[gd_scene load_steps=27 format=3 uid="uid://k6sf5hm387vs"]
 
 [ext_resource type="Script" path="res://Main/main.gd" id="1_ughty"]
 [ext_resource type="Texture2D" uid="uid://d1rh6mau1dyi5" path="res://Assets/FloorAndWalls/store_tilemap.png" id="2_vkgnn"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://c35t3qjuuji32" path="res://icon.svg" id="16_jyqqd"]
 [ext_resource type="AudioStream" uid="uid://mhib2xqy0hq3" path="res://Objects/InteractableObjects/Bell/ding.mp3" id="17_5pfs5"]
 [ext_resource type="Script" path="res://Main/spawner.gd" id="19_aiqr6"]
+[ext_resource type="Theme" uid="uid://di1s2ewmo5emu" path="res://Assets/main_ui.tres" id="20_mj0ge"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mailf"]
 texture = ExtResource("2_vkgnn")
@@ -268,6 +269,7 @@ offset_left = 1100.0
 offset_top = 25.0
 offset_right = 1900.0
 offset_bottom = 925.0
+theme = ExtResource("20_mj0ge")
 script = ExtResource("7_8tn31")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Objects/Cauldron/CanvasLayer/PanelContainer"]
@@ -391,6 +393,7 @@ offset_left = 1100.0
 offset_top = 25.0
 offset_right = 1900.0
 offset_bottom = 925.0
+theme = ExtResource("20_mj0ge")
 script = ExtResource("6_ks1wo")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Objects/Shelf/CanvasLayer/PanelContainer"]
@@ -475,6 +478,22 @@ visible = false
 position = Vector2(-11, -1)
 navigation_polygon = SubResource("NavigationPolygon_6mie0")
 
+[node name="game_over_canvas" type="CanvasLayer" parent="."]
+
+[node name="game_over_timer" type="Timer" parent="game_over_canvas"]
+wait_time = 180.0
+
+[node name="game_over_label" type="Label" parent="game_over_canvas"]
+texture_filter = 1
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 211.0
+offset_bottom = 111.0
+size_flags_vertical = 1
+theme = ExtResource("20_mj0ge")
+theme_override_font_sizes/font_size = 100
+text = "180"
+
 [connection signal="spawn_customer" from="." to="Customers" method="_on_spawn_customer"]
 [connection signal="add_item_to_pot" from="Objects/Cauldron" to="Objects/Cauldron/CanvasLayer/PanelContainer" method="_on_cauldron_add_item_to_pot"]
 [connection signal="open_menu" from="Objects/Cauldron" to="Objects/Cauldron/CanvasLayer" method="_on_open"]
@@ -496,3 +515,4 @@ navigation_polygon = SubResource("NavigationPolygon_6mie0")
 [connection signal="end_day" from="Player" to="." method="_on_player_end_day"]
 [connection signal="start_day" from="Player" to="." method="_on_player_start_day"]
 [connection signal="timeout" from="Customers/SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="game_over_canvas/game_over_timer" to="." method="_on_game_over_timer_timeout"]

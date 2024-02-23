@@ -8,3 +8,6 @@ func _ready():
 func _process(delta):
 	if Input.is_action_pressed("escape_game"):
 			get_tree().quit()
+
+func _on_button_pressed():
+	get_tree().change_scene_to_file("res://Main/main.tscn")
