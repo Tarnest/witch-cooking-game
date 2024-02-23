@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal start_day
+
 enum state {
 	IDLE,
 	MOVING,
@@ -9,12 +11,16 @@ enum state {
 @export var speed = 200
 @export var ray_length = 15
 @export var inventory: Inventory
+
 @onready var ray = $RayCast2D
 @onready var inventoryUI = $InventoryUI
 @onready var animation_player = $AnimationPlayer
+@onready var bell = get_node("../Objects/Bell/AudioStreamPlayer2D")
+
 var current_state = state.IDLE
 var direction = Vector2.ZERO
 var last_direction = Vector2.LEFT
+var is_moving = false
 
 func _physics_process(_delta):
 	match current_state:
@@ -39,10 +45,14 @@ func _physics_process(_delta):
 			inventory.clear()
 		
 		if collider.is_in_group("Customer") && Input.is_action_just_pressed("open_menu"):
-			if collider.current_state == collider.State.WAITING_TO_ORDER:
-				collider.change_state(collider.State.MOVING_TO_RECEIVE_ORDER)
-			if collider.current_state == collider.State.WAITING_TO_RECEIVE_ORDER :
+			if collider.current_state == collider.state.WAITING_TO_ORDER:
+				collider.change_state(collider.state.MOVING_TO_RECEIVE_ORDER)
+			if collider.current_state == collider.state.WAITING_TO_RECEIVE_ORDER:
 				collider.check_inventory()
+		
+		if collider.is_in_group("Bell") && Input.is_action_just_pressed("open_menu"):
+			bell.play()
+			start_day.emit()
 		
 	move_and_slide()
 

@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-enum State {
+enum state {
 	MOVING_TO_ORDER,
 	WAITING_TO_ORDER,
 	MOVING_TO_RECEIVE_ORDER,
@@ -22,7 +22,7 @@ var possible_item_names: Array[String] = ["red_potion"]
 var items_requested: Dictionary
 
 var accel = 7
-var current_state: State = State.MOVING_TO_ORDER
+var current_state: state = state.MOVING_TO_ORDER
 var direction: Vector2
 
 func _ready():
@@ -41,11 +41,11 @@ func _ready():
 	
 func _physics_process(delta):
 	match current_state:
-		State.MOVING_TO_ORDER: moving_to_order()
-		State.WAITING_TO_ORDER: waiting_to_order()
-		State.MOVING_TO_RECEIVE_ORDER: moving_to_receive_order()
-		State.WAITING_TO_RECEIVE_ORDER: waiting_to_receive_order()
-		State.LEAVING: leaving()
+		state.MOVING_TO_ORDER: moving_to_order()
+		state.WAITING_TO_ORDER: waiting_to_order()
+		state.MOVING_TO_RECEIVE_ORDER: moving_to_receive_order()
+		state.WAITING_TO_RECEIVE_ORDER: waiting_to_receive_order()
+		state.LEAVING: leaving()
 		_: pass
 	
 	var distance = navigation.target_position - global_position
@@ -85,7 +85,7 @@ func check_inventory():
 		for i in range(items_to_remove[item]):
 			player_inventory.remove(item)
 	
-	change_state(State.LEAVING)
+	change_state(state.LEAVING)
 	
 func change_state(new_state):
 	if current_state != new_state:
@@ -98,7 +98,7 @@ func moving_to_order():
 	var distance = global_position.distance_to(waiting_in_line)
 	
 	if distance < 0.5:
-		change_state(State.WAITING_TO_ORDER)
+		change_state(state.WAITING_TO_ORDER)
 	
 	if direction != Vector2.ZERO:
 		animation.play("move_left")
@@ -130,7 +130,7 @@ func moving_to_receive_order():
 	var distance = global_position.distance_to(waiting_in_line)
 	
 	if distance < 0.5:
-		change_state(State.WAITING_TO_RECEIVE_ORDER)
+		change_state(state.WAITING_TO_RECEIVE_ORDER)
 	
 
 func waiting_to_receive_order():
