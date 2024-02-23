@@ -38,8 +38,11 @@ func _physics_process(_delta):
 		if collider.is_in_group("Trash") && Input.is_action_just_pressed("open_menu"):
 			inventory.clear()
 		
-		if collider.is_in_group("Customer") && Input.is_action_just_pressed("left_click"):
-			collider.change_state(collider.State.MOVING_TO_RECEIVE_ORDER)
+		if collider.is_in_group("Customer") && Input.is_action_just_pressed("open_menu"):
+			if collider.current_state == collider.State.WAITING_TO_ORDER:
+				collider.change_state(collider.State.MOVING_TO_RECEIVE_ORDER)
+			if collider.current_state == collider.State.WAITING_TO_RECEIVE_ORDER :
+				collider.check_inventory()
 		
 	move_and_slide()
 
