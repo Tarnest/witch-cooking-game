@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://c35t3qjuuji32" path="res://icon.svg" id="16_jyqqd"]
 [ext_resource type="AudioStream" uid="uid://mhib2xqy0hq3" path="res://Objects/InteractableObjects/Bell/ding.mp3" id="17_5pfs5"]
 [ext_resource type="Script" path="res://Customers/spawner.gd" id="19_aiqr6"]
-[ext_resource type="Theme" path="res://Assets/main_ui.tres" id="20_mj0ge"]
+[ext_resource type="Theme" uid="uid://di1s2ewmo5emu" path="res://Assets/main_ui.tres" id="20_mj0ge"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mailf"]
 texture = ExtResource("2_vkgnn")

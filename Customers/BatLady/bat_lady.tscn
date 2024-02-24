@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d1ops2yus6g6f"]
+[gd_scene load_steps=14 format=3 uid="uid://ctggdbv13k2bn"]
 
 [ext_resource type="Script" path="res://Customers/BatLady/bat_lady.gd" id="1_db7f1"]
 [ext_resource type="Script" path="res://Customers/customer.gd" id="2_ash76"]
@@ -6,7 +6,7 @@
 
 [sub_resource type="Resource" id="Resource_y0t6r"]
 script = ExtResource("2_ash76")
-recipes = Array[Resource("res://recipe.gd")]([])
+recipes = Array[Resource("res://Inventory/recipe.gd")]([])
 speed = 25
 
 [sub_resource type="Animation" id="Animation_r3smj"]
