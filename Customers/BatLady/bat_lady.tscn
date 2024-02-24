@@ -6,7 +6,7 @@
 
 [sub_resource type="Resource" id="Resource_y0t6r"]
 script = ExtResource("2_ash76")
-recipes = Array[Resource("res://recipe.gd")]([])
+recipes = Array[Resource("res://Inventory/recipe.gd")]([])
 speed = 25
 
 [sub_resource type="Animation" id="Animation_r3smj"]
