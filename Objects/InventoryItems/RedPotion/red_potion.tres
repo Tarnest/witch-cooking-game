@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Inventory/inventory_item.gd" id="1_x64ni"]
 [ext_resource type="Resource" uid="uid://bmcv40mlchqsg" path="res://Objects/InventoryItems/Eyeball/eyeball.tres" id="2_hn7oj"]
 [ext_resource type="Texture2D" uid="uid://bk7wanogvwjbm" path="res://Objects/InventoryItems/Tongue/tongue.png" id="2_mq55u"]
-[ext_resource type="Script" path="res://recipe.gd" id="3_ykenx"]
+[ext_resource type="Script" path="res://Inventory/recipe.gd" id="3_ykenx"]
 
 [sub_resource type="Resource" id="Resource_0o64a"]
 script = ExtResource("3_ykenx")
