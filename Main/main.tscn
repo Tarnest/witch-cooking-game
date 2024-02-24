@@ -478,21 +478,34 @@ visible = false
 position = Vector2(-11, -1)
 navigation_polygon = SubResource("NavigationPolygon_6mie0")
 
-[node name="GameOver" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Timer" type="Timer" parent="GameOver"]
+[node name="GameOver" type="Node2D" parent="CanvasLayer"]
+
+[node name="Timer" type="Timer" parent="CanvasLayer/GameOver"]
 wait_time = 180.0
 
-[node name="Label" type="Label" parent="GameOver"]
+[node name="Label" type="Label" parent="CanvasLayer/GameOver"]
+visible = false
 texture_filter = 1
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 211.0
-offset_bottom = 111.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 1709.0
+offset_right = 1910.0
+offset_bottom = 101.0
+grow_horizontal = 0
 size_flags_vertical = 1
 theme = ExtResource("20_mj0ge")
 theme_override_font_sizes/font_size = 100
 text = "180"
+horizontal_alignment = 2
+
+[node name="Orders" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [connection signal="spawn_customer" from="." to="Customers" method="_on_spawn_customer"]
 [connection signal="add_item_to_pot" from="Objects/Cauldron" to="Objects/Cauldron/CanvasLayer/PanelContainer" method="_on_cauldron_add_item_to_pot"]
@@ -514,5 +527,6 @@ text = "180"
 [connection signal="pressed" from="Objects/Shelf/CanvasLayer/PanelContainer/VBoxContainer/Close" to="Objects/Shelf/CanvasLayer" method="_on_close_pressed"]
 [connection signal="end_day" from="Player" to="." method="_on_player_end_day"]
 [connection signal="start_day" from="Player" to="." method="_on_player_start_day"]
+[connection signal="customer_left" from="Customers" to="." method="_on_customers_customer_left"]
 [connection signal="timeout" from="Customers/SpawnTimer" to="." method="_on_spawn_timer_timeout"]
-[connection signal="timeout" from="GameOver/Timer" to="." method="_on_game_over_timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/GameOver/Timer" to="." method="_on_game_over_timer_timeout"]

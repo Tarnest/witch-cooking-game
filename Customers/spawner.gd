@@ -1,5 +1,7 @@
 extends Node2D
 
+signal customer_left
+
 @onready var bat_lady = preload("res://Customers/BatLady/bat_lady.tscn")
 @onready var spawn_timer = $SpawnTimer
 @onready var customers: Array = [bat_lady]
