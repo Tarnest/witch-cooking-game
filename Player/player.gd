@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 signal start_day
 signal end_day
+signal customer_order(order: Dictionary)
+signal give_customer_order
 
 enum state {
 	IDLE,
@@ -50,9 +52,12 @@ func _physics_process(_delta):
 			if collider.current_state == collider.state.WAITING_TO_ORDER && orders_taken < max_orders:
 				collider.change_state(collider.state.MOVING_TO_RECEIVE_ORDER)
 				orders_taken += 1
+				customer_order.emit(collider.items_requested)
 			if collider.current_state == collider.state.WAITING_TO_RECEIVE_ORDER:
-				collider.check_inventory()
-				orders_taken -= 1
+				var has_items_required = collider.check_inventory()
+				if has_items_required:
+					orders_taken -= 1
+					give_customer_order.emit()
 		
 		if collider.is_in_group("Bell") && Input.is_action_just_pressed("open_menu"):
 			bell.play()
