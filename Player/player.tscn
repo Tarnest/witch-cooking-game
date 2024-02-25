@@ -238,6 +238,7 @@ shape = SubResource("CapsuleShape2D_5t5ku")
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(-20, 0)
 collision_mask = 44
+hit_from_inside = true
 collide_with_areas = true
 
 [node name="InventoryUI" type="CanvasLayer" parent="."]
