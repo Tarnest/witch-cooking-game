@@ -486,7 +486,6 @@ navigation_polygon = SubResource("NavigationPolygon_6mie0")
 wait_time = 180.0
 
 [node name="Label" type="Label" parent="CanvasLayer/GameOver"]
-visible = false
 texture_filter = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -500,12 +499,6 @@ theme = ExtResource("20_mj0ge")
 theme_override_font_sizes/font_size = 100
 text = "180"
 horizontal_alignment = 2
-
-[node name="Orders" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [connection signal="spawn_customer" from="." to="Customers" method="_on_spawn_customer"]
 [connection signal="add_item_to_pot" from="Objects/Cauldron" to="Objects/Cauldron/CanvasLayer/PanelContainer" method="_on_cauldron_add_item_to_pot"]

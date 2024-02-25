@@ -65,11 +65,11 @@ func _physics_process(delta):
 	
 	move_and_slide()
 
-func check_inventory():
+func check_inventory() -> bool:
 	var items_to_remove: Dictionary = {}
 	
 	if player_inventory.is_empty():
-		return
+		return false
 	
 	for slot in player_inventory.slots:
 		if !items_requested.has(slot.item):
@@ -79,13 +79,15 @@ func check_inventory():
 				items_to_remove[slot.item] = items_requested[slot.item]
 	
 	if items_requested != items_to_remove:
-		return
+		return false
 	
 	for item in items_to_remove:
 		for i in range(items_to_remove[item]):
 			player_inventory.remove(item)
 	
 	change_state(state.LEAVING)
+	
+	return true
 	
 func change_state(new_state):
 	if current_state != new_state:
