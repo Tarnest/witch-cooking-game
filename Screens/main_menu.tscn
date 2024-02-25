@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://b04exndb70hm4"]
+[gd_scene load_steps=7 format=3 uid="uid://b04exndb70hm4"]
 
 [ext_resource type="Theme" uid="uid://di1s2ewmo5emu" path="res://Assets/main_ui.tres" id="1_31sjd"]
 [ext_resource type="Script" path="res://Screens/main_menu.gd" id="1_os1tr"]
 [ext_resource type="Texture2D" uid="uid://uyp372nibyag" path="res://Assets/Menu/MainMenu/main_screen_button_single.png" id="3_3ddyp"]
 [ext_resource type="Texture2D" uid="uid://dboxqipktikf6" path="res://Assets/Menu/MainMenu/main_menu_background.tres" id="3_6qpgn"]
+[ext_resource type="Texture2D" uid="uid://b3uua8y5ycuu1" path="res://Assets/Menu/MainMenu/button.png" id="3_c5xtn"]
+[ext_resource type="Texture2D" uid="uid://dhtirxn7hkg5b" path="res://Assets/Menu/MainMenu/button_hover.png" id="4_sqdbx"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_os1tr")
@@ -21,7 +23,9 @@ offset_left = 111.0
 offset_top = 539.0
 offset_right = 951.0
 offset_bottom = 810.0
-texture_normal = ExtResource("3_3ddyp")
+texture_normal = ExtResource("3_c5xtn")
+texture_hover = ExtResource("4_sqdbx")
+stretch_mode = 3
 
 [node name="start_button_text" type="Label" parent="start_button"]
 layout_mode = 1
@@ -48,7 +52,9 @@ offset_left = 111.0
 offset_top = 789.0
 offset_right = 951.0
 offset_bottom = 1060.0
-texture_normal = ExtResource("3_3ddyp")
+texture_normal = ExtResource("3_c5xtn")
+texture_hover = ExtResource("4_sqdbx")
+stretch_mode = 3
 
 [node name="exit_button_text" type="Label" parent="exit_button"]
 layout_mode = 1
