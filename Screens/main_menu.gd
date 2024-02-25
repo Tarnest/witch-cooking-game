@@ -10,8 +10,13 @@ func _process(delta):
 			get_tree().quit()
 
 func _on_exit_button_pressed():
-	get_tree().quit()
+	#get_tree().quit()
+	get_tree().change_scene_to_file("res://Screens/tutorial.tscn")
 
 
 func _on_start_button_pressed():
 	get_tree().change_scene_to_file("res://Main/main.tscn")
+
+
+func _on_close_button_pressed():
+	get_tree().quit()

@@ -1,0 +1,142 @@
+[gd_scene load_steps=6 format=3 uid="uid://dslrg81n2xyiw"]
+
+[ext_resource type="Script" path="res://Screens/tutorial.gd" id="1_4b0b0"]
+[ext_resource type="Texture2D" uid="uid://bwcq4f81bexan" path="res://Assets/Menu/tutorial_paper.png" id="1_mo5uu"]
+[ext_resource type="Theme" uid="uid://di1s2ewmo5emu" path="res://Assets/main_ui.tres" id="2_q2gjb"]
+[ext_resource type="Texture2D" uid="uid://3447k7lh4ctk" path="res://Assets/Menu/arrow-sheet.png" id="4_14ykm"]
+[ext_resource type="Texture2D" uid="uid://ctxorfm5yvta" path="res://Assets/Menu/arrow-hover.png" id="5_co8lw"]
+
+[node name="tutorial" type="CanvasLayer"]
+script = ExtResource("1_4b0b0")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_mo5uu")
+
+[node name="text1" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -903.5
+offset_top = -559.0
+offset_right = 903.5
+offset_bottom = 519.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_q2gjb")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "--Article 1: Get the basics down--
+
+Welcome to running the emporium! Due to your . . . suboptimal experience, before I let you even get close to touching my precious stores, you must familiarize yourself with the basics. 
+
+Your time overseeing the shop will be divided into rounds. Ring the bell located on the counter to allow entry to ghoulish clients that appear at the top of the screen for a new round. Interact with the bed to end your round. 
+
+On your left lies the farm, where you will harvest herb-based ingredients. Interact with each plant to collect the necessary substance. 
+
+To your right resides my personal library of artifact tomes, potion manuals, and ritual guides. These contain all the recipes you must use in your witchcrafting. You’ll need to click to interact with your unlocked recipes. As you gain experience, you will unlock more recipes. Take caution in this area--I won’t have centuries of collecting and toiling squandered by careless paws!
+
+Though I can store infinite items in my pocket dimension, you unfortunately lack the necessary talent for this convenience. Instead, you will have 5 inventory slots to access from my pocket dimension. Each slot may only contain 1 type of item and you may have a maximum of 3 items per slot.  
+
+Inevitably, you will have ingredients you no longer need clogging your inventory. To discard items, please click the Venus flytrap at the bottom of the screen. 
+
+Lastly, on the shelves located near the top of the main chamber, you will find magical ingredients of the non-plant variety. Click the shelves to pick the items up. Now, I’ve fought tooth and nail for some of these items, so let’s try not to waste too many of them. 
+
+Think you’ve got a good idea of the emporium’s layout? Not so simple now that you’re the one running things, eh? This’ll teach you not to lounge about all day on my shoulder. Continue reading to learn the witchcrafting portion of the tutorial. 
+
+--Article 2: Crafting artifacts is timeless fun!--
+
+Crafting artifacts is the artform for the impatient--simply collect the ingredients, follow the recipe, and instantly obtain any artifact a client desires! "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+clip_text = true
+
+[node name="text2" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -903.5
+offset_top = -557.0
+offset_right = 903.5
+offset_bottom = 521.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_q2gjb")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "--Article 3: Potion-brewing is like baking, but with explosions!--
+
+Brewing potions, unlike crafting artifacts, is not instantaneous and will consume time. You’ll still need to gather the necessary ingredients and follow the recipe, but you’ll have to leave them stewing in the cauldron for a while. You’re encouraged to multitask, but be careful of the time! A potion too little or too much concocted is a ruined potion, and a ruined potion doesn't make for very satisfied customers. 
+
+--Article 4: It’s not a bright idea to monkey around with rituals--
+
+Your final and most harrowing task will be rituals. Tricky, tricky things, rituals are. I’ve nearly lost all my internal organs more times than I can count in that blasted pentagram circle! You’ll need to focus only on the ritual when performing this job--no multitasking! 
+
+On your left lies the farm, where you will harvest herb-based ingredients. Interact with each plant to collect the necessary substance. 
+
+To your right resides my personal library of artifact tomes, potion manuals, and ritual guides. These contain all the recipes you must use in your witchcrafting. You’ll need to click to interact with your unlocked recipes. As you gain experience, you will unlock more recipes. Take caution in this area--I won’t have centuries of collecting and toiling squandered by careless paws!
+
+Though I can store infinite items in my pocket dimension, you unfortunately lack the necessary talent for this convenience. Instead, you will have 5 inventory slots to access from my pocket dimension. Each slot may only contain 1 type of item and you may have a maximum of 3 items per slot.  
+
+Inevitably, you will have ingredients you no longer need clogging your inventory. To discard items, please click the Venus flytrap at the bottom of the screen. 
+
+Lastly, on the shelves located near the top of the main chamber, you will find magical ingredients of the non-plant variety. Click the shelves to pick the items up. Now, I’ve fought tooth and nail for some of these items, so let’s try not to waste too many of them. 
+
+Think you’ve got a good idea of the emporium’s layout? Not so simple now that you’re the one running things, eh? This’ll teach you not to lounge about all day on my shoulder. Continue reading to learn the witchcrafting portion of the tutorial. "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+clip_text = true
+
+[node name="exit_text" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -247.5
+offset_top = -41.0
+offset_right = 247.5
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_q2gjb")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 35
+text = "Press 'SPACE' to continue"
+
+[node name="exit_timer" type="Timer" parent="."]
+wait_time = 0.6
+autostart = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="ArrowR" type="TextureButton" parent="."]
+offset_left = 1802.0
+offset_top = 1008.0
+offset_right = 1916.0
+offset_bottom = 1077.0
+texture_normal = ExtResource("4_14ykm")
+texture_hover = ExtResource("5_co8lw")
+stretch_mode = 0
+
+[node name="ArrowL" type="TextureButton" parent="."]
+offset_left = 4.0
+offset_top = 1007.0
+offset_right = 118.0
+offset_bottom = 1076.0
+texture_normal = ExtResource("4_14ykm")
+texture_hover = ExtResource("5_co8lw")
+stretch_mode = 0
+flip_h = true
+
+[connection signal="timeout" from="exit_timer" to="." method="_on_exit_timer_timeout"]
+[connection signal="pressed" from="ArrowR" to="." method="_on_arrow_r_pressed"]
+[connection signal="pressed" from="ArrowL" to="." method="_on_arrow_l_pressed"]
