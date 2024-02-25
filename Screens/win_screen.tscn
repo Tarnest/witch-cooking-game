@@ -1,16 +1,18 @@
 [gd_scene load_steps=4 format=3 uid="uid://wglrmlyx6v4g"]
 
 [ext_resource type="Script" path="res://Screens/win_screen.gd" id="1_tqlt4"]
-[ext_resource type="Texture2D" uid="uid://knwhrrexagmm" path="res://Assets/Menu/you_win.jpg" id="2_hwluo"]
-[ext_resource type="Theme" path="res://Assets/main_ui.tres" id="3_miv4v"]
+[ext_resource type="Texture2D" uid="uid://dlpfq8ljg2w8r" path="res://Assets/Menu/you_win.png" id="2_gki4u"]
+[ext_resource type="Theme" uid="uid://di1s2ewmo5emu" path="res://Assets/main_ui.tres" id="3_miv4v"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_tqlt4")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
 offset_right = 1920.0
 offset_bottom = 1080.0
-texture = ExtResource("2_hwluo")
+texture = ExtResource("2_gki4u")
+expand_mode = 3
 
 [node name="exit_text" type="Label" parent="."]
 anchors_preset = 8
