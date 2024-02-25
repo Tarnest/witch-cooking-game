@@ -1258,7 +1258,7 @@ text = "Confirm"
 
 [node name="Trash" type="StaticBody2D" parent="Objects" groups=["Trash"]]
 y_sort_enabled = true
-position = Vector2(372, 254)
+position = Vector2(357, 300)
 collision_layer = 4
 script = ExtResource("47_13sad")
 
