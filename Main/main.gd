@@ -11,8 +11,8 @@ var day_started = false
 var day = -1
 var day_customers = [10, 12, 14, 16, 18]
 var customer_amount = 1
-var day_time = 300
-var spawn_time = [20, 13, 11, 9, 8]
+var day_time = 600
+var spawn_time = [40, 13, 11, 9, 8]
 var current_spawn_time
 
 func _process(_delta):
