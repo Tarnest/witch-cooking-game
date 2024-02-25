@@ -10,12 +10,8 @@ func _on_player_customer_order(order: Dictionary):
 	var current_slots: Array
 	
 	for slots in slots_arr:
-		for slot in slots:
-			if !slot.visible:
-				current_slots = slots
-				break
-		
-		if !current_slots.is_empty():
+		if !slots[0].visible:
+			current_slots = slots
 			break
 	
 	if current_slots.is_empty():
@@ -26,7 +22,15 @@ func _on_player_customer_order(order: Dictionary):
 	
 
 func _on_player_give_customer_order():
-	pass # Replace with function body.
+	for i in range(slots2.size()):
+		slots1[i].update(slots2[i].current_item)
+	
+	for i in range(slots3.size()):
+		slots2[i].update(slots3[i].current_item)
+	
+	for slot in slots3:
+		slot.visible = false
+	
 
 
 func dict_to_arr(dict: Dictionary) -> Array:
