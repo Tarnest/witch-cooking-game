@@ -8,7 +8,8 @@ signal give_customer_order
 enum state {
 	IDLE,
 	MOVING,
-	PAUSE
+	PAUSE,
+	DANCE
 }
 
 @export var speed = 200
@@ -18,6 +19,8 @@ enum state {
 @onready var ray = $RayCast2D
 @onready var inventoryUI = $InventoryUI
 @onready var animation_player = $AnimationPlayer
+@onready var sprite = $Sprite2D
+@onready var dance_sprite = $Dance
 @onready var bell = get_node("../Objects/Bell/AudioStreamPlayer2D")
 
 var current_state = state.IDLE
@@ -25,12 +28,17 @@ var direction = Vector2.ZERO
 var last_direction = Vector2.LEFT
 var orders_taken = 0
 var max_orders = 3
+var has_danced = false
 
 func _physics_process(_delta):
 	match current_state:
 		state.IDLE: idle()
 		state.MOVING: moving()
 		state.PAUSE: pause()
+		state.DANCE: dance()
+	
+	if Input.is_action_just_pressed("dance") && current_state != state.DANCE:
+		change_state(state.DANCE)
 	
 	# get ray direction based on player last direction while moving
 	ray.target_position = last_direction.normalized() * ray_length
@@ -42,7 +50,7 @@ func _physics_process(_delta):
 			change_state(state.PAUSE)
 		
 		if collider.is_in_group("Container") && collider.object_closed:
-			if current_state != state.MOVING:
+			if current_state == state.PAUSE:
 				change_state(state.IDLE)
 		
 		if collider.is_in_group("Trash") && Input.is_action_just_pressed("open_menu"):
@@ -129,3 +137,15 @@ func play_animation(type, dir):
 		down_left: animation = type + "_" + "southwest"
 	
 	animation_player.play(animation)
+
+func dance():
+	sprite.visible = false
+	dance_sprite.visible = true
+	if animation_player.get_current_animation() != "dance" && !has_danced:
+		animation_player.play("dance")
+		has_danced = true
+	if !animation_player.is_playing():
+		change_state(state.IDLE)
+		has_danced = false
+		sprite.visible = true
+		dance_sprite.visible = false

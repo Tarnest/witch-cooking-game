@@ -1,8 +1,8 @@
 extends Node
 
 @onready var player_inventory = preload("res://Player/player_inventory.tres")
-@onready var slots: Array = $VBoxContainer/NinePatchRect/GridContainer.get_children()
-@onready var items_to_craft: Array = $VBoxContainer/ToCraft/GridContainer.get_children()
+@onready var slots: Array = $TextureRect/GridContainer.get_children()
+@onready var items_to_craft: Array = $TextureRect/ToCraft.get_children()
 var items_in_pot: Array
 
 func _ready():

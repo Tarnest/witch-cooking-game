@@ -4,7 +4,7 @@ signal open_menu
 signal add_item_to_pot(item: InventoryItem)
 
 @onready var player_inventory = preload("res://Player/player_inventory.tres")
-@onready var slot_size = $CanvasLayer/PanelContainer/VBoxContainer/ToCraft/GridContainer.get_children().size()
+@onready var slot_size = $CanvasLayer/PanelContainer/TextureRect/ToCraft.get_children().size()
 
 var black_potion = preload("res://Objects/InventoryItems/CauldronProducts/BlackPotion/black_potion.tres")
 var blue_potion = preload("res://Objects/InventoryItems/CauldronProducts/BluePotion/blue_potion.tres")

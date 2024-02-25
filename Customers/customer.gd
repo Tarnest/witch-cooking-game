@@ -19,7 +19,7 @@ enum state {
 @onready var collision_shape = $CollisionShape2D
 @onready var player_inventory = preload("res://Player/player_inventory.tres")
 
-var possible_item_names: Array[String] = ["red_potion"]
+var possible_item_names: Array[String] = ["red_potion", "black_potion", "blue_potion", "dark_green_potion", "green_potion", "orange_potion", "pink_potion", "purple_potion", "white_potion", "yellow_potion", "broach", "clock", "cross", "dagger", "feather_pen", "hook", "horseshoe", "key", "rabbit_foot", "ring", "ritual1", "ritual2", "ritual3", "ritual4", "ritual5"]
 var items_requested: Dictionary
 
 var accel = 7
