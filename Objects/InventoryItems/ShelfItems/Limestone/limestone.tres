@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://u0uugtjsiu88"]
+
+[ext_resource type="Script" path="res://Inventory/inventory_item.gd" id="1_ummt5"]
+[ext_resource type="Texture2D" uid="uid://co1lorfmj7oom" path="res://Objects/InventoryItems/ShelfItems/Limestone/limestone_hover.png" id="1_xl2by"]
+[ext_resource type="Texture2D" uid="uid://dqdn7qqrikhyp" path="res://Objects/InventoryItems/ShelfItems/Limestone/limestone.png" id="2_h87lh"]
+
+[resource]
+script = ExtResource("1_ummt5")
+name = "limestone"
+texture = ExtResource("2_h87lh")
+hover_texture = ExtResource("1_xl2by")

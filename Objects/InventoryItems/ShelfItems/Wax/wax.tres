@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://covjf5t6lwuy8"]
+
+[ext_resource type="Texture2D" uid="uid://d1hi42h8vb34y" path="res://Objects/InventoryItems/ShelfItems/Wax/wax_hover.png" id="1_7mva7"]
+[ext_resource type="Script" path="res://Inventory/inventory_item.gd" id="1_j7nr3"]
+[ext_resource type="Texture2D" uid="uid://dhjy03pqg8pel" path="res://Objects/InventoryItems/ShelfItems/Wax/wax.png" id="2_2ndrm"]
+
+[resource]
+script = ExtResource("1_j7nr3")
+name = "wax"
+texture = ExtResource("2_2ndrm")
+hover_texture = ExtResource("1_7mva7")

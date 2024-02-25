@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://dakj5en311c8b"]
+
+[ext_resource type="Texture2D" uid="uid://3pfvhn1vjq7p" path="res://Objects/InventoryItems/ShelfItems/Horn/horn_hover.png" id="1_07nos"]
+[ext_resource type="Script" path="res://Inventory/inventory_item.gd" id="1_pofdj"]
+[ext_resource type="Texture2D" uid="uid://bty5pgvwa6aqm" path="res://Objects/InventoryItems/ShelfItems/Horn/horn.png" id="2_rig4v"]
+
+[resource]
+script = ExtResource("1_pofdj")
+name = "horn"
+texture = ExtResource("2_rig4v")
+hover_texture = ExtResource("1_07nos")

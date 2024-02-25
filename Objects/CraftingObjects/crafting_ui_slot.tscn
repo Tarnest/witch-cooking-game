@@ -3,6 +3,8 @@
 [ext_resource type="Script" path="res://Objects/CraftingObjects/crafting_ui_slot.gd" id="1_hs50u"]
 
 [node name="UISlot" type="TextureButton"]
+action_mode = 0
+stretch_mode = 3
 script = ExtResource("1_hs50u")
 
 [node name="Amount" type="Label" parent="."]
