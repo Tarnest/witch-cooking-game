@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://df0nqk5cpo4n0"]
+[gd_scene load_steps=5 format=3 uid="uid://df0nqk5cpo4n0"]
 
 [ext_resource type="Script" path="res://Screens/game_over.gd" id="1_fb0jo"]
 [ext_resource type="Texture2D" uid="uid://cg1ddib3ufqdc" path="res://Assets/Menu/game_over.png" id="1_fnetq"]
 [ext_resource type="Theme" uid="uid://di1s2ewmo5emu" path="res://Assets/main_ui.tres" id="2_fa7jx"]
+[ext_resource type="AudioStream" uid="uid://ds3qn0r8hi00m" path="res://Assets/Menu/game_over_3.mp3" id="4_1ydx5"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_fb0jo")
@@ -18,13 +19,15 @@ anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -930.0
-offset_top = 764.0
-offset_right = 426.0
-offset_bottom = -66.0
+offset_left = -631.0
+offset_top = 590.0
+offset_right = 725.0
+offset_bottom = -240.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_fa7jx")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 40
 theme_override_font_sizes/font_size = 250
 text = "Game Over"
 horizontal_alignment = 1
@@ -36,17 +39,25 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -500.0
-offset_top = -41.0
-offset_right = -5.0
+offset_left = -1150.0
+offset_top = -250.0
+offset_right = -655.0
+offset_bottom = -209.0
 grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("2_fa7jx")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 35
 text = "Press 'SPACE' to continue"
 
 [node name="exit_timer" type="Timer" parent="."]
 wait_time = 0.6
 autostart = true
+
+[node name="game_over_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_1ydx5")
+pitch_scale = 0.9
+autoplay = true
 
 [connection signal="timeout" from="exit_timer" to="." method="_on_exit_timer_timeout"]
