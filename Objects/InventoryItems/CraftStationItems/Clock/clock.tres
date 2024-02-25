@@ -1,7 +1,25 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=2 format=3 uid="uid://du1i0i03fh4js"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=9 format=3 uid="uid://du1i0i03fh4js"]
 
+[ext_resource type="Texture2D" uid="uid://dsknauea26chn" path="res://Objects/InventoryItems/CraftStationItems/Clock/clock_hover.png" id="1_5whk6"]
 [ext_resource type="Script" path="res://Inventory/inventory_item.gd" id="1_kbtha"]
+[ext_resource type="Resource" uid="uid://cr4xg53mdt1ul" path="res://Objects/InventoryItems/ShelfItems/Gold/gold.tres" id="2_o8t4i"]
+[ext_resource type="Resource" uid="uid://da7nc6m3hb3ee" path="res://Objects/InventoryItems/ShelfItems/Paper/paper.tres" id="3_r8ah4"]
+[ext_resource type="Resource" uid="uid://cqq26m8toagkj" path="res://Objects/InventoryItems/ShelfItems/Rope/rope.tres" id="4_xyn30"]
+[ext_resource type="Script" path="res://Inventory/recipe.gd" id="5_m6ikg"]
+[ext_resource type="Texture2D" uid="uid://bcpkwpdjodd1c" path="res://Objects/InventoryItems/CraftStationItems/Clock/clock.png" id="7_a75fi"]
+
+[sub_resource type="Resource" id="Resource_1p57q"]
+script = ExtResource("5_m6ikg")
+ingredients = {
+ExtResource("2_o8t4i"): 2,
+ExtResource("3_r8ah4"): 1,
+ExtResource("4_xyn30"): 1
+}
+name = "clock"
 
 [resource]
 script = ExtResource("1_kbtha")
-name = ""
+name = "clock"
+texture = ExtResource("7_a75fi")
+hover_texture = ExtResource("1_5whk6")
+recipe = SubResource("Resource_1p57q")

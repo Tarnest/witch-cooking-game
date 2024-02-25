@@ -1,16 +1,21 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=7 format=3 uid="uid://dsugbedxlpl11"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=10 format=3 uid="uid://dsugbedxlpl11"]
 
 [ext_resource type="Resource" uid="uid://cbbjdfdlifcfl" path="res://Objects/InventoryItems/ShelfItems/Ruby/ruby.tres" id="1_1trlr"]
+[ext_resource type="Texture2D" uid="uid://tq5q2bxye06a" path="res://Objects/InventoryItems/CauldronProducts/RedPotion/red_potion_hover.png" id="1_oddvn"]
 [ext_resource type="Script" path="res://Inventory/inventory_item.gd" id="1_x64ni"]
-[ext_resource type="Resource" uid="uid://bmcv40mlchqsg" path="res://Objects/InventoryItems/ShelfItems/Eyeball/eyeball.tres" id="2_hn7oj"]
+[ext_resource type="Resource" uid="uid://ci5h5grsggtat" path="res://Objects/InventoryItems/ShelfItems/Bottle/bottle.tres" id="2_usfja"]
+[ext_resource type="Resource" uid="uid://da7nc6m3hb3ee" path="res://Objects/InventoryItems/ShelfItems/Paper/paper.tres" id="3_40vtr"]
 [ext_resource type="Script" path="res://Inventory/recipe.gd" id="3_ykenx"]
 [ext_resource type="Texture2D" uid="uid://by1u8kxydy7ui" path="res://Objects/InventoryItems/CauldronProducts/RedPotion/Red_Potion.png" id="5_p2uee"]
+[ext_resource type="Resource" uid="uid://ca6lj46p52oju" path="res://Objects/InventoryItems/ShelfItems/Tongue/tongue.tres" id="5_wm0lw"]
 
 [sub_resource type="Resource" id="Resource_0o64a"]
 script = ExtResource("3_ykenx")
 ingredients = {
-ExtResource("1_1trlr"): 2,
-ExtResource("2_hn7oj"): 1
+ExtResource("2_usfja"): 1,
+ExtResource("3_40vtr"): 1,
+ExtResource("1_1trlr"): 1,
+ExtResource("5_wm0lw"): 1
 }
 name = "red_potion"
 
@@ -18,4 +23,5 @@ name = "red_potion"
 script = ExtResource("1_x64ni")
 name = "red_potion"
 texture = ExtResource("5_p2uee")
+hover_texture = ExtResource("1_oddvn")
 recipe = SubResource("Resource_0o64a")

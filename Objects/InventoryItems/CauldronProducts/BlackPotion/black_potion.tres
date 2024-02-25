@@ -1,7 +1,27 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=2 format=3 uid="uid://ccfmyxsejqpkw"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=10 format=3 uid="uid://ccfmyxsejqpkw"]
 
 [ext_resource type="Script" path="res://Inventory/inventory_item.gd" id="1_1x175"]
+[ext_resource type="Texture2D" uid="uid://ce6obvxgampls" path="res://Objects/InventoryItems/CauldronProducts/BlackPotion/black_potion_hover.png" id="1_l4vhu"]
+[ext_resource type="Resource" uid="uid://ci5h5grsggtat" path="res://Objects/InventoryItems/ShelfItems/Bottle/bottle.tres" id="2_3obmq"]
+[ext_resource type="Texture2D" uid="uid://cipj3odv2gsn4" path="res://Objects/InventoryItems/CauldronProducts/BlackPotion/Black_Potion.png" id="3_2sduu"]
+[ext_resource type="Resource" uid="uid://dyq8yqlitjkq5" path="res://Objects/InventoryItems/FarmItems/Aloe/aloe.tres" id="3_awqca"]
+[ext_resource type="Resource" uid="uid://bdgc2khme13j" path="res://Objects/InventoryItems/ShelfItems/Twig/twig.tres" id="4_yjmxl"]
+[ext_resource type="Resource" uid="uid://u0uugtjsiu88" path="res://Objects/InventoryItems/ShelfItems/Limestone/limestone.tres" id="5_f3h71"]
+[ext_resource type="Script" path="res://Inventory/recipe.gd" id="6_hjehf"]
+
+[sub_resource type="Resource" id="Resource_7x5ln"]
+script = ExtResource("6_hjehf")
+ingredients = {
+ExtResource("2_3obmq"): 1,
+ExtResource("3_awqca"): 1,
+ExtResource("4_yjmxl"): 1,
+ExtResource("5_f3h71"): 1
+}
+name = "black_potion"
 
 [resource]
 script = ExtResource("1_1x175")
-name = ""
+name = "black_potion"
+texture = ExtResource("3_2sduu")
+hover_texture = ExtResource("1_l4vhu")
+recipe = SubResource("Resource_7x5ln")

@@ -1,7 +1,25 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=2 format=3 uid="uid://cjcim1dx21mti"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=9 format=3 uid="uid://cjcim1dx21mti"]
 
 [ext_resource type="Script" path="res://Inventory/inventory_item.gd" id="1_10j1p"]
+[ext_resource type="Texture2D" uid="uid://cuf8ux4tdnneo" path="res://Objects/InventoryItems/CauldronProducts/YellowPotion/yellow_potion_hover.png" id="1_mu486"]
+[ext_resource type="Resource" uid="uid://ci5h5grsggtat" path="res://Objects/InventoryItems/ShelfItems/Bottle/bottle.tres" id="2_4owwq"]
+[ext_resource type="Resource" uid="uid://ct12lvsiwka5" path="res://Objects/InventoryItems/FarmItems/Tulip/tulip.tres" id="3_3ootd"]
+[ext_resource type="Texture2D" uid="uid://0hehem6b5u2g" path="res://Objects/InventoryItems/CauldronProducts/YellowPotion/Yellow_Potion.png" id="3_43mjy"]
+[ext_resource type="Resource" uid="uid://covjf5t6lwuy8" path="res://Objects/InventoryItems/ShelfItems/Wax/wax.tres" id="4_vi0em"]
+[ext_resource type="Script" path="res://Inventory/recipe.gd" id="5_xojwp"]
+
+[sub_resource type="Resource" id="Resource_y07kq"]
+script = ExtResource("5_xojwp")
+ingredients = {
+ExtResource("2_4owwq"): 1,
+ExtResource("3_3ootd"): 1,
+ExtResource("4_vi0em"): 1
+}
+name = "yellow_potion"
 
 [resource]
 script = ExtResource("1_10j1p")
-name = ""
+name = "yellow_potion"
+texture = ExtResource("3_43mjy")
+hover_texture = ExtResource("1_mu486")
+recipe = SubResource("Resource_y07kq")

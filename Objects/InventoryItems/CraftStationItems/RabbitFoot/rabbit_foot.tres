@@ -1,7 +1,27 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=2 format=3 uid="uid://i1ii4fkhcdov"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=10 format=3 uid="uid://i1ii4fkhcdov"]
 
 [ext_resource type="Script" path="res://Inventory/inventory_item.gd" id="1_dtyye"]
+[ext_resource type="Texture2D" uid="uid://dq3mhwc5ospmr" path="res://Objects/InventoryItems/CraftStationItems/RabbitFoot/amongus_hover.png" id="1_fkirj"]
+[ext_resource type="Resource" uid="uid://bmcv40mlchqsg" path="res://Objects/InventoryItems/ShelfItems/Eyeball/eyeball.tres" id="2_7k3n7"]
+[ext_resource type="Resource" uid="uid://7n8at78gwjub" path="res://Objects/InventoryItems/ShelfItems/LizardTail/lizard_tail.tres" id="3_gxcve"]
+[ext_resource type="Resource" uid="uid://dakj5en311c8b" path="res://Objects/InventoryItems/ShelfItems/Horn/horn.tres" id="4_sh1im"]
+[ext_resource type="Resource" uid="uid://mhwjxq5xdm5x" path="res://Objects/InventoryItems/ShelfItems/ChickenFoot/chicken_foot.tres" id="5_pdpd7"]
+[ext_resource type="Script" path="res://Inventory/recipe.gd" id="6_g3re4"]
+[ext_resource type="Texture2D" uid="uid://cjsbjj51irsca" path="res://Objects/InventoryItems/CraftStationItems/RabbitFoot/rabbit_foot.png" id="8_hgijy"]
+
+[sub_resource type="Resource" id="Resource_ggggf"]
+script = ExtResource("6_g3re4")
+ingredients = {
+ExtResource("2_7k3n7"): 1,
+ExtResource("3_gxcve"): 1,
+ExtResource("4_sh1im"): 1,
+ExtResource("5_pdpd7"): 1
+}
+name = "rabbit_foot"
 
 [resource]
 script = ExtResource("1_dtyye")
-name = ""
+name = "rabbit_foot"
+texture = ExtResource("8_hgijy")
+hover_texture = ExtResource("1_fkirj")
+recipe = SubResource("Resource_ggggf")

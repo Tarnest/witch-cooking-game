@@ -1,7 +1,23 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=2 format=3 uid="uid://7mcnskolc6nw"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=8 format=3 uid="uid://7mcnskolc6nw"]
 
+[ext_resource type="Texture2D" uid="uid://cwoxwldgieitg" path="res://Objects/InventoryItems/CraftStationItems/Ring/ring_hover.png" id="1_54kpi"]
 [ext_resource type="Script" path="res://Inventory/inventory_item.gd" id="1_xv1eg"]
+[ext_resource type="Resource" uid="uid://dlx6c0sxt563u" path="res://Objects/InventoryItems/ShelfItems/Emerald/emerald.tres" id="2_krnys"]
+[ext_resource type="Resource" uid="uid://cr4xg53mdt1ul" path="res://Objects/InventoryItems/ShelfItems/Gold/gold.tres" id="3_qb0ut"]
+[ext_resource type="Script" path="res://Inventory/recipe.gd" id="4_crrwv"]
+[ext_resource type="Texture2D" uid="uid://cad546mdw2ojt" path="res://Objects/InventoryItems/CraftStationItems/Ring/ring.png" id="6_7c35g"]
+
+[sub_resource type="Resource" id="Resource_wm06j"]
+script = ExtResource("4_crrwv")
+ingredients = {
+ExtResource("2_krnys"): 1,
+ExtResource("3_qb0ut"): 2
+}
+name = "ring"
 
 [resource]
 script = ExtResource("1_xv1eg")
-name = ""
+name = "ring"
+texture = ExtResource("6_7c35g")
+hover_texture = ExtResource("1_54kpi")
+recipe = SubResource("Resource_wm06j")

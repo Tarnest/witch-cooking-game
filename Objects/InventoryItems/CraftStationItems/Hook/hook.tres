@@ -1,7 +1,23 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=2 format=3 uid="uid://blh5lh3qvi8fj"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=8 format=3 uid="uid://blh5lh3qvi8fj"]
 
 [ext_resource type="Script" path="res://Inventory/inventory_item.gd" id="1_cca10"]
+[ext_resource type="Texture2D" uid="uid://m8k603b1dvh6" path="res://Objects/InventoryItems/CraftStationItems/Hook/hook_hover.png" id="1_od2jp"]
+[ext_resource type="Resource" uid="uid://ca6lj46p52oju" path="res://Objects/InventoryItems/ShelfItems/Tongue/tongue.tres" id="2_lbu6s"]
+[ext_resource type="Resource" uid="uid://f3l4nph5mj2y" path="res://Objects/InventoryItems/ShelfItems/Silver/silver.tres" id="3_ta7me"]
+[ext_resource type="Texture2D" uid="uid://drkebmmarjyll" path="res://Objects/InventoryItems/CraftStationItems/Hook/hook.png" id="3_ujb5e"]
+[ext_resource type="Script" path="res://Inventory/recipe.gd" id="4_dfpcu"]
+
+[sub_resource type="Resource" id="Resource_56h4h"]
+script = ExtResource("4_dfpcu")
+ingredients = {
+ExtResource("2_lbu6s"): 1,
+ExtResource("3_ta7me"): 2
+}
+name = "hook"
 
 [resource]
 script = ExtResource("1_cca10")
-name = ""
+name = "hook"
+texture = ExtResource("3_ujb5e")
+hover_texture = ExtResource("1_od2jp")
+recipe = SubResource("Resource_56h4h")

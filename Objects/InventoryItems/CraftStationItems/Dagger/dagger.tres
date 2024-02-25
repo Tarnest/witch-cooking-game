@@ -1,7 +1,23 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=2 format=3 uid="uid://bl4okqf4kxtre"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=8 format=3 uid="uid://bl4okqf4kxtre"]
 
+[ext_resource type="Texture2D" uid="uid://cjg035t2rplkj" path="res://Objects/InventoryItems/CraftStationItems/Dagger/knife_hover.png" id="1_g1qc8"]
 [ext_resource type="Script" path="res://Inventory/inventory_item.gd" id="1_v7fbe"]
+[ext_resource type="Resource" uid="uid://7n8at78gwjub" path="res://Objects/InventoryItems/ShelfItems/LizardTail/lizard_tail.tres" id="2_wcx8r"]
+[ext_resource type="Resource" uid="uid://f3l4nph5mj2y" path="res://Objects/InventoryItems/ShelfItems/Silver/silver.tres" id="3_xoukm"]
+[ext_resource type="Script" path="res://Inventory/recipe.gd" id="4_ga8jm"]
+[ext_resource type="Texture2D" uid="uid://b1i0i18kqqyo" path="res://Objects/InventoryItems/CraftStationItems/Dagger/dagger.png" id="6_bleuo"]
+
+[sub_resource type="Resource" id="Resource_0h6vg"]
+script = ExtResource("4_ga8jm")
+ingredients = {
+ExtResource("2_wcx8r"): 1,
+ExtResource("3_xoukm"): 1
+}
+name = "dagger"
 
 [resource]
 script = ExtResource("1_v7fbe")
-name = ""
+name = "dagger"
+texture = ExtResource("6_bleuo")
+hover_texture = ExtResource("1_g1qc8")
+recipe = SubResource("Resource_0h6vg")

@@ -1,7 +1,25 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=2 format=3 uid="uid://baklftafua7gu"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=9 format=3 uid="uid://baklftafua7gu"]
 
 [ext_resource type="Script" path="res://Inventory/inventory_item.gd" id="1_b5yu3"]
+[ext_resource type="Texture2D" uid="uid://o7kxq36fvajn" path="res://Objects/InventoryItems/CraftStationItems/Key/key_hover.png" id="1_bou62"]
+[ext_resource type="Resource" uid="uid://mhwjxq5xdm5x" path="res://Objects/InventoryItems/ShelfItems/ChickenFoot/chicken_foot.tres" id="2_02yrq"]
+[ext_resource type="Resource" uid="uid://covjf5t6lwuy8" path="res://Objects/InventoryItems/ShelfItems/Wax/wax.tres" id="3_0r75p"]
+[ext_resource type="Resource" uid="uid://cr4xg53mdt1ul" path="res://Objects/InventoryItems/ShelfItems/Gold/gold.tres" id="4_p1q8o"]
+[ext_resource type="Script" path="res://Inventory/recipe.gd" id="5_kc6fp"]
+[ext_resource type="Texture2D" uid="uid://cwg1jr7cn244f" path="res://Objects/InventoryItems/CraftStationItems/Key/key.png" id="7_5bv3q"]
+
+[sub_resource type="Resource" id="Resource_ttx61"]
+script = ExtResource("5_kc6fp")
+ingredients = {
+ExtResource("2_02yrq"): 1,
+ExtResource("3_0r75p"): 1,
+ExtResource("4_p1q8o"): 1
+}
+name = "key"
 
 [resource]
 script = ExtResource("1_b5yu3")
-name = ""
+name = "key"
+texture = ExtResource("7_5bv3q")
+hover_texture = ExtResource("1_bou62")
+recipe = SubResource("Resource_ttx61")

@@ -1,7 +1,27 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=2 format=3 uid="uid://bngaiexutvlsc"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=10 format=3 uid="uid://bngaiexutvlsc"]
 
 [ext_resource type="Script" path="res://Inventory/inventory_item.gd" id="1_fe2uj"]
+[ext_resource type="Texture2D" uid="uid://bn05qqm0piava" path="res://Objects/InventoryItems/CauldronProducts/WhitePotion/white_potion_hover.png" id="1_g3rks"]
+[ext_resource type="Resource" uid="uid://ci5h5grsggtat" path="res://Objects/InventoryItems/ShelfItems/Bottle/bottle.tres" id="2_uct3u"]
+[ext_resource type="Resource" uid="uid://b42gmdml8v8i5" path="res://Objects/InventoryItems/FarmItems/Rose/rose.tres" id="3_7v23q"]
+[ext_resource type="Texture2D" uid="uid://dt632qh0fchr0" path="res://Objects/InventoryItems/CauldronProducts/WhitePotion/White_Potion.png" id="3_njbo5"]
+[ext_resource type="Resource" uid="uid://cxtu2d1nbp14d" path="res://Objects/InventoryItems/ShelfItems/Feather/feather.tres" id="4_btbhv"]
+[ext_resource type="Resource" uid="uid://cr4xg53mdt1ul" path="res://Objects/InventoryItems/ShelfItems/Gold/gold.tres" id="5_febfi"]
+[ext_resource type="Script" path="res://Inventory/recipe.gd" id="6_0yla2"]
+
+[sub_resource type="Resource" id="Resource_cyqws"]
+script = ExtResource("6_0yla2")
+ingredients = {
+ExtResource("2_uct3u"): 1,
+ExtResource("3_7v23q"): 1,
+ExtResource("4_btbhv"): 1,
+ExtResource("5_febfi"): 1
+}
+name = "white_potion"
 
 [resource]
 script = ExtResource("1_fe2uj")
-name = ""
+name = "white_potion"
+texture = ExtResource("3_njbo5")
+hover_texture = ExtResource("1_g3rks")
+recipe = SubResource("Resource_cyqws")

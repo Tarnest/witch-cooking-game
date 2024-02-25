@@ -1,7 +1,25 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=2 format=3 uid="uid://byk0ejoh2w2pa"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=9 format=3 uid="uid://byk0ejoh2w2pa"]
 
 [ext_resource type="Script" path="res://Inventory/inventory_item.gd" id="1_4xwow"]
+[ext_resource type="Texture2D" uid="uid://dtmx8kyv1b5by" path="res://Objects/InventoryItems/CraftStationItems/Broach/broach_hover.png" id="1_snxmt"]
+[ext_resource type="Resource" uid="uid://cbbjdfdlifcfl" path="res://Objects/InventoryItems/ShelfItems/Ruby/ruby.tres" id="2_gyxqd"]
+[ext_resource type="Resource" uid="uid://ca6lj46p52oju" path="res://Objects/InventoryItems/ShelfItems/Tongue/tongue.tres" id="3_uq5te"]
+[ext_resource type="Resource" uid="uid://cr4xg53mdt1ul" path="res://Objects/InventoryItems/ShelfItems/Gold/gold.tres" id="4_ybcns"]
+[ext_resource type="Script" path="res://Inventory/recipe.gd" id="5_7ioio"]
+[ext_resource type="Texture2D" uid="uid://cu60t3exd6rin" path="res://Objects/InventoryItems/CraftStationItems/Broach/broach.png" id="7_r52jl"]
+
+[sub_resource type="Resource" id="Resource_hch5v"]
+script = ExtResource("5_7ioio")
+ingredients = {
+ExtResource("2_gyxqd"): 1,
+ExtResource("3_uq5te"): 1,
+ExtResource("4_ybcns"): 1
+}
+name = "broach"
 
 [resource]
 script = ExtResource("1_4xwow")
-name = ""
+name = "broach"
+texture = ExtResource("7_r52jl")
+hover_texture = ExtResource("1_snxmt")
+recipe = SubResource("Resource_hch5v")

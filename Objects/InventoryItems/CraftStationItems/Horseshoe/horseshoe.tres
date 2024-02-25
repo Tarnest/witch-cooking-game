@@ -1,7 +1,23 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=2 format=3 uid="uid://c7khadmyr8rrq"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=8 format=3 uid="uid://c7khadmyr8rrq"]
 
+[ext_resource type="Texture2D" uid="uid://7if3ygj7j5oe" path="res://Objects/InventoryItems/CraftStationItems/Horseshoe/horseshoe_hover.png" id="1_m7fts"]
 [ext_resource type="Script" path="res://Inventory/inventory_item.gd" id="1_mntwo"]
+[ext_resource type="Resource" uid="uid://cr4xg53mdt1ul" path="res://Objects/InventoryItems/ShelfItems/Gold/gold.tres" id="2_5dx8p"]
+[ext_resource type="Resource" uid="uid://bdgc2khme13j" path="res://Objects/InventoryItems/ShelfItems/Twig/twig.tres" id="3_gr1vn"]
+[ext_resource type="Script" path="res://Inventory/recipe.gd" id="4_kx5sh"]
+[ext_resource type="Texture2D" uid="uid://wew8qio5dodj" path="res://Objects/InventoryItems/CraftStationItems/Horseshoe/horseshoe.png" id="6_1ykno"]
+
+[sub_resource type="Resource" id="Resource_jnun0"]
+script = ExtResource("4_kx5sh")
+ingredients = {
+ExtResource("2_5dx8p"): 2,
+ExtResource("3_gr1vn"): 1
+}
+name = "horseshoe"
 
 [resource]
 script = ExtResource("1_mntwo")
-name = ""
+name = "horseshoe"
+texture = ExtResource("6_1ykno")
+hover_texture = ExtResource("1_m7fts")
+recipe = SubResource("Resource_jnun0")

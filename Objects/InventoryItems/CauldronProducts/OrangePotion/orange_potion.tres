@@ -1,7 +1,25 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=2 format=3 uid="uid://bf00mukvwwheo"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=9 format=3 uid="uid://bf00mukvwwheo"]
 
+[ext_resource type="Texture2D" uid="uid://c7dpalxyby7ih" path="res://Objects/InventoryItems/CauldronProducts/OrangePotion/orange_potion_hover.png" id="1_2b2ik"]
 [ext_resource type="Script" path="res://Inventory/inventory_item.gd" id="1_xbdmp"]
+[ext_resource type="Resource" uid="uid://ci5h5grsggtat" path="res://Objects/InventoryItems/ShelfItems/Bottle/bottle.tres" id="2_b1ham"]
+[ext_resource type="Texture2D" uid="uid://b0ewa7ewgj1b4" path="res://Objects/InventoryItems/CauldronProducts/OrangePotion/Orange_Potion.png" id="3_gjk8a"]
+[ext_resource type="Resource" uid="uid://mhwjxq5xdm5x" path="res://Objects/InventoryItems/ShelfItems/ChickenFoot/chicken_foot.tres" id="3_rymek"]
+[ext_resource type="Resource" uid="uid://cqq26m8toagkj" path="res://Objects/InventoryItems/ShelfItems/Rope/rope.tres" id="4_7xc5o"]
+[ext_resource type="Script" path="res://Inventory/recipe.gd" id="5_r072y"]
+
+[sub_resource type="Resource" id="Resource_fuytc"]
+script = ExtResource("5_r072y")
+ingredients = {
+ExtResource("2_b1ham"): 1,
+ExtResource("3_rymek"): 1,
+ExtResource("4_7xc5o"): 1
+}
+name = "orange_potion"
 
 [resource]
 script = ExtResource("1_xbdmp")
-name = ""
+name = "orange_potion"
+texture = ExtResource("3_gjk8a")
+hover_texture = ExtResource("1_2b2ik")
+recipe = SubResource("Resource_fuytc")

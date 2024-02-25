@@ -1,7 +1,25 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=2 format=3 uid="uid://b6xoxfugsjmlt"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=9 format=3 uid="uid://b6xoxfugsjmlt"]
 
+[ext_resource type="Texture2D" uid="uid://b26416k0acpts" path="res://Objects/InventoryItems/CauldronProducts/BluePotion/blue_potion_hover.png" id="1_jn4on"]
 [ext_resource type="Script" path="res://Inventory/inventory_item.gd" id="1_tk4i3"]
+[ext_resource type="Resource" uid="uid://ci5h5grsggtat" path="res://Objects/InventoryItems/ShelfItems/Bottle/bottle.tres" id="2_xace4"]
+[ext_resource type="Texture2D" uid="uid://ka6new7wa2t6" path="res://Objects/InventoryItems/CauldronProducts/BluePotion/Blue_Potion.png" id="3_8p8il"]
+[ext_resource type="Resource" uid="uid://f3l4nph5mj2y" path="res://Objects/InventoryItems/ShelfItems/Silver/silver.tres" id="3_medrh"]
+[ext_resource type="Resource" uid="uid://dc7po2ebxs14u" path="res://Objects/InventoryItems/FarmItems/Sage/sage.tres" id="4_5vy0v"]
+[ext_resource type="Script" path="res://Inventory/recipe.gd" id="5_fdyes"]
+
+[sub_resource type="Resource" id="Resource_hd51x"]
+script = ExtResource("5_fdyes")
+ingredients = {
+ExtResource("2_xace4"): 1,
+ExtResource("3_medrh"): 1,
+ExtResource("4_5vy0v"): 1
+}
+name = "blue_potion"
 
 [resource]
 script = ExtResource("1_tk4i3")
-name = ""
+name = "blue_potion"
+texture = ExtResource("3_8p8il")
+hover_texture = ExtResource("1_jn4on")
+recipe = SubResource("Resource_hd51x")
