@@ -257,6 +257,7 @@ offset_right = 246.0
 offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 0
+theme = ExtResource("7_fyr32")
 texture = ExtResource("4_ienr7")
 
 [node name="GridContainer" type="GridContainer" parent="InventoryUI/NinePatchRect"]

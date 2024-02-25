@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=3 uid="uid://k6sf5hm387vs"]
+[gd_scene load_steps=95 format=3 uid="uid://k6sf5hm387vs"]
 
 [ext_resource type="Script" path="res://Main/main.gd" id="1_ughty"]
 [ext_resource type="Texture2D" uid="uid://d1rh6mau1dyi5" path="res://Assets/FloorAndWalls/store_tilemap.png" id="2_vkgnn"]
@@ -264,14 +264,11 @@ texture = ExtResource("2_vkgnn")
 physics_layer_0/collision_layer = 2
 sources/0 = SubResource("TileSetAtlasSource_mailf")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_26orl"]
-size = Vector2(160, 31)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p5qlg"]
+size = Vector2(80, 31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_md5uq"]
 size = Vector2(80, 30)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p5qlg"]
-size = Vector2(80, 31)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_acigl"]
 radius = 12.0
@@ -451,8 +448,8 @@ script = ExtResource("4_qnvxi")
 player_inventory = ExtResource("4_2wowl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/BookShelf"]
-position = Vector2(3, -1.5)
-shape = SubResource("RectangleShape2D_26orl")
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_p5qlg")
 metadata/_edit_lock_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Objects/BookShelf"]

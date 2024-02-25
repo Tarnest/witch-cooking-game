@@ -42,8 +42,8 @@ func _on_chicken_foot_pressed():
 	button_clicked.emit("chicken_foot")
 
 
-func _on_lizard_tongue_pressed():
-	button_clicked.emit("lizard_tongue")
+func _on_lizard_tail_pressed():
+	button_clicked.emit("lizard_tail")
 
 
 func _on_wax_pressed():

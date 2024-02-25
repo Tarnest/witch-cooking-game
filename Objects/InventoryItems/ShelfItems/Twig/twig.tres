@@ -6,6 +6,6 @@
 
 [resource]
 script = ExtResource("1_ccyks")
-name = "tongue"
+name = "twig"
 texture = ExtResource("2_jmus4")
 hover_texture = ExtResource("1_p040m")

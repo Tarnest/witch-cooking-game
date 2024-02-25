@@ -24,6 +24,7 @@ var lizard_tail = preload("res://Objects/InventoryItems/ShelfItems/LizardTail/li
 var paper = preload("res://Objects/InventoryItems/ShelfItems/Paper/paper.tres")
 var rope = preload("res://Objects/InventoryItems/ShelfItems/Rope/rope.tres")
 var ruby = preload("res://Objects/InventoryItems/ShelfItems/Ruby/ruby.tres")
+var silver = preload("res://Objects/InventoryItems/ShelfItems/Silver/silver.tres")
 var tongue = preload("res://Objects/InventoryItems/ShelfItems/Tongue/tongue.tres")
 var twig = preload("res://Objects/InventoryItems/ShelfItems/Twig/twig.tres")
 var wax = preload("res://Objects/InventoryItems/ShelfItems/Wax/wax.tres")
@@ -56,7 +57,7 @@ var ritual3 = preload("res://Objects/InventoryItems/PentagramItems/Ritual3/ritua
 var ritual4 = preload("res://Objects/InventoryItems/PentagramItems/Ritual4/ritual4.tres")
 var ritual5 = preload("res://Objects/InventoryItems/PentagramItems/Ritual5/ritual5.tres")
 
-var possible_items: Array[InventoryItem] = [aloe, apple, rose, sage, tulip, bottle, chicken_foot, emerald, eyeball, feather, gold, horn, limestone, lizard_tail, paper, rope, ruby, tongue, twig, wax, black_potion, blue_potion, dark_green_potion, green_potion, orange_potion, pink_potion, purple_potion, red_potion, white_potion, yellow_potion, broach, clock, cross, dagger, feather_pen, hook, horseshoe, key, rabbit_foot, ring, ritual1, ritual2, ritual3, ritual4, ritual5]
+var possible_items: Array[InventoryItem] = [silver, aloe, apple, rose, sage, tulip, bottle, chicken_foot, emerald, eyeball, feather, gold, horn, limestone, lizard_tail, paper, rope, ruby, tongue, twig, wax, black_potion, blue_potion, dark_green_potion, green_potion, orange_potion, pink_potion, purple_potion, red_potion, white_potion, yellow_potion, broach, clock, cross, dagger, feather_pen, hook, horseshoe, key, rabbit_foot, ring, ritual1, ritual2, ritual3, ritual4, ritual5]
 
 func insert(item: InventoryItem):
 	var item_slots = slots.filter(func(slot): return slot.item == item)
