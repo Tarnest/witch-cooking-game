@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://k6sf5hm387vs"]
+[gd_scene load_steps=76 format=3 uid="uid://k6sf5hm387vs"]
 
 [ext_resource type="Script" path="res://Main/main.gd" id="1_ughty"]
 [ext_resource type="Texture2D" uid="uid://d1rh6mau1dyi5" path="res://Assets/FloorAndWalls/store_tilemap.png" id="2_vkgnn"]
@@ -54,6 +54,8 @@
 [ext_resource type="Texture2D" uid="uid://cm600r3jqdjim" path="res://Objects/InteractableObjects/Trash/trashcan.png" id="48_vhyg6"]
 [ext_resource type="Texture2D" uid="uid://din5hmxv5dxw7" path="res://Objects/InteractableObjects/Bed/bed.png" id="49_dj04p"]
 [ext_resource type="Texture2D" uid="uid://cqmlykd5c45n3" path="res://Objects/InteractableObjects/Bed/table.png" id="50_7oucq"]
+[ext_resource type="Script" path="res://Objects/InteractableObjects/Farm/farm.gd" id="53_wpn1q"]
+[ext_resource type="Texture2D" uid="uid://ttl540uxrr4d" path="res://Objects/InteractableObjects/Farm/Rose/rose_plant.png" id="54_yidav"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mailf"]
 texture = ExtResource("2_vkgnn")
@@ -307,6 +309,66 @@ size = Vector2(41, 22)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekkfy"]
 size = Vector2(42, 20)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pw4dc"]
+radius = 9.0
+height = 18.0
+
+[sub_resource type="Animation" id="Animation_5r2nr"]
+resource_name = "grown"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_g2nqn"]
+resource_name = "harvested"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_4qgfg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m30nf"]
+_data = {
+"RESET": SubResource("Animation_4qgfg"),
+"grown": SubResource("Animation_5r2nr"),
+"harvested": SubResource("Animation_g2nqn")
+}
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_6mie0"]
 vertices = PackedVector2Array(446, 22, 224, 24, 228, -75, 449, -75, 459, -53, 459, -52, 483, -11)
@@ -739,6 +801,70 @@ metadata/_edit_lock_ = true
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_ekkfy")
 metadata/_edit_lock_ = true
+
+[node name="Farm" type="Node2D" parent="Objects"]
+
+[node name="Roses" type="Node2D" parent="Objects/Farm"]
+
+[node name="Plant1" type="StaticBody2D" parent="Objects/Farm/Roses" groups=["Plant"]]
+position = Vector2(30, 275)
+script = ExtResource("53_wpn1q")
+
+[node name="Sprite2D" type="Sprite2D" parent="Objects/Farm/Roses/Plant1"]
+texture_filter = 1
+texture = ExtResource("54_yidav")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Farm/Roses/Plant1"]
+position = Vector2(-1, 11)
+shape = SubResource("CapsuleShape2D_pw4dc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Objects/Farm/Roses/Plant1"]
+libraries = {
+"": SubResource("AnimationLibrary_m30nf")
+}
+
+[node name="Timer" type="Timer" parent="Objects/Farm/Roses/Plant1"]
+
+[node name="Plant2" type="StaticBody2D" parent="Objects/Farm/Roses" groups=["Plant"]]
+position = Vector2(75, 275)
+script = ExtResource("53_wpn1q")
+
+[node name="Sprite2D" type="Sprite2D" parent="Objects/Farm/Roses/Plant2"]
+texture_filter = 1
+texture = ExtResource("54_yidav")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Farm/Roses/Plant2"]
+position = Vector2(-1, 11)
+shape = SubResource("CapsuleShape2D_pw4dc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Objects/Farm/Roses/Plant2"]
+libraries = {
+"": SubResource("AnimationLibrary_m30nf")
+}
+
+[node name="Timer" type="Timer" parent="Objects/Farm/Roses/Plant2"]
+
+[node name="Plant3" type="StaticBody2D" parent="Objects/Farm/Roses" groups=["Plant"]]
+position = Vector2(120, 275)
+script = ExtResource("53_wpn1q")
+
+[node name="Sprite2D" type="Sprite2D" parent="Objects/Farm/Roses/Plant3"]
+texture_filter = 1
+texture = ExtResource("54_yidav")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Farm/Roses/Plant3"]
+position = Vector2(-1, 11)
+shape = SubResource("CapsuleShape2D_pw4dc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Objects/Farm/Roses/Plant3"]
+libraries = {
+"": SubResource("AnimationLibrary_m30nf")
+}
+
+[node name="Timer" type="Timer" parent="Objects/Farm/Roses/Plant3"]
 
 [node name="Player" parent="." instance=ExtResource("3_dwiu7")]
 z_index = 1
