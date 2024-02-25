@@ -52,6 +52,23 @@ tracks/0/keys = {
 "values": [2, 12, 13, 14, 15]
 }
 
+[sub_resource type="Animation" id="Animation_k3g7w"]
+resource_name = "idle_right"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [3, 16, 17, 18, 19]
+}
+
 [sub_resource type="Animation" id="Animation_ek7tv"]
 resource_name = "idle_up"
 length = 1.5
@@ -103,6 +120,22 @@ tracks/0/keys = {
 "values": [28, 29, 30, 31]
 }
 
+[sub_resource type="Animation" id="Animation_nahf1"]
+resource_name = "move_right"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [32, 33, 34, 35]
+}
+
 [sub_resource type="Animation" id="Animation_w20r4"]
 resource_name = "move_up"
 length = 0.8
@@ -118,39 +151,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [24, 25, 26, 27]
-}
-
-[sub_resource type="Animation" id="Animation_k3g7w"]
-resource_name = "idle_right"
-length = 1.5
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [3, 16, 17, 18, 19]
-}
-
-[sub_resource type="Animation" id="Animation_nahf1"]
-resource_name = "move_right"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [32, 33, 34, 35]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7p1xd"]

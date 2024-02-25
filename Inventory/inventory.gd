@@ -28,9 +28,35 @@ var tongue = preload("res://Objects/InventoryItems/ShelfItems/Tongue/tongue.tres
 var twig = preload("res://Objects/InventoryItems/ShelfItems/Twig/twig.tres")
 var wax = preload("res://Objects/InventoryItems/ShelfItems/Wax/wax.tres")
 
+var black_potion = preload("res://Objects/InventoryItems/CauldronProducts/BlackPotion/black_potion.tres")
+var blue_potion = preload("res://Objects/InventoryItems/CauldronProducts/BluePotion/blue_potion.tres")
+var dark_green_potion = preload("res://Objects/InventoryItems/CauldronProducts/DarkGreenPotion/dark_green_potion.tres")
+var green_potion = preload("res://Objects/InventoryItems/CauldronProducts/GreenPotion/green_potion.tres")
+var orange_potion = preload("res://Objects/InventoryItems/CauldronProducts/OrangePotion/orange_potion.tres")
+var pink_potion = preload("res://Objects/InventoryItems/CauldronProducts/PinkPotion/pink_potion.tres")
+var purple_potion = preload("res://Objects/InventoryItems/CauldronProducts/PurplePotion/purple_potion.tres")
 var red_potion = preload("res://Objects/InventoryItems/CauldronProducts/RedPotion/red_potion.tres")
+var white_potion = preload("res://Objects/InventoryItems/CauldronProducts/WhitePotion/white_potion.tres")
+var yellow_potion = preload("res://Objects/InventoryItems/CauldronProducts/YellowPotion/yellow_potion.tres")
 
-var possible_items: Array[InventoryItem] = [eyeball, ruby, red_potion]
+var broach = preload("res://Objects/InventoryItems/CraftStationItems/Broach/broach.tres")
+var clock = preload("res://Objects/InventoryItems/CraftStationItems/Clock/clock.tres")
+var cross = preload("res://Objects/InventoryItems/CraftStationItems/Cross/cross.tres")
+var dagger = preload("res://Objects/InventoryItems/CraftStationItems/Dagger/dagger.tres")
+var feather_pen = preload("res://Objects/InventoryItems/CraftStationItems/FeatherPen/feather_pen.tres")
+var hook = preload("res://Objects/InventoryItems/CraftStationItems/Hook/hook.tres")
+var horseshoe = preload("res://Objects/InventoryItems/CraftStationItems/Horseshoe/horseshoe.tres")
+var key = preload("res://Objects/InventoryItems/CraftStationItems/Key/key.tres")
+var rabbit_foot = preload("res://Objects/InventoryItems/CraftStationItems/RabbitFoot/rabbit_foot.tres")
+var ring = preload("res://Objects/InventoryItems/CraftStationItems/Ring/ring.tres")
+
+var ritual1 = preload("res://Objects/InventoryItems/PentagramItems/Ritual1/ritual1.tres")
+var ritual2 = preload("res://Objects/InventoryItems/PentagramItems/Ritual2/ritual2.tres")
+var ritual3 = preload("res://Objects/InventoryItems/PentagramItems/Ritual3/ritual3.tres")
+var ritual4 = preload("res://Objects/InventoryItems/PentagramItems/Ritual4/ritual4.tres")
+var ritual5 = preload("res://Objects/InventoryItems/PentagramItems/Ritual5/ritual5.tres")
+
+var possible_items: Array[InventoryItem] = [aloe, apple, rose, sage, tulip, bottle, chicken_foot, emerald, eyeball, feather, gold, horn, limestone, lizard_tail, paper, rope, ruby, tongue, twig, wax, black_potion, blue_potion, dark_green_potion, green_potion, orange_potion, pink_potion, purple_potion, red_potion, white_potion, yellow_potion, broach, clock, cross, dagger, feather_pen, hook, horseshoe, key, rabbit_foot, ring, ritual1, ritual2, ritual3, ritual4, ritual5]
 
 func insert(item: InventoryItem):
 	var item_slots = slots.filter(func(slot): return slot.item == item)

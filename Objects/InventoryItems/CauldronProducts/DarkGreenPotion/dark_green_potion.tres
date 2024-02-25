@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="InventoryItem" load_steps=10 format=3 uid="uid://bw0lya5hto4v2"]
 
-[ext_resource type="Texture2D" uid="uid://i043lyn2u4i6" path="res://Objects/InventoryItems/CauldronProducts/BigGreenPotion/dark_green_potion_hover.png" id="1_5q8jk"]
+[ext_resource type="Texture2D" uid="uid://i043lyn2u4i6" path="res://Objects/InventoryItems/CauldronProducts/DarkGreenPotion/dark_green_potion_hover.png" id="1_5q8jk"]
 [ext_resource type="Script" path="res://Inventory/inventory_item.gd" id="1_0828c"]
 [ext_resource type="Resource" uid="uid://ci5h5grsggtat" path="res://Objects/InventoryItems/ShelfItems/Bottle/bottle.tres" id="2_glktu"]
 [ext_resource type="Resource" uid="uid://dakj5en311c8b" path="res://Objects/InventoryItems/ShelfItems/Horn/horn.tres" id="3_q0tw8"]
 [ext_resource type="Resource" uid="uid://7n8at78gwjub" path="res://Objects/InventoryItems/ShelfItems/LizardTail/lizard_tail.tres" id="4_gdaw2"]
 [ext_resource type="Resource" uid="uid://dyq8yqlitjkq5" path="res://Objects/InventoryItems/FarmItems/Aloe/aloe.tres" id="5_5uo6b"]
 [ext_resource type="Script" path="res://Inventory/recipe.gd" id="6_qg47x"]
-[ext_resource type="Texture2D" uid="uid://c44i7cxfrpkaj" path="res://Objects/InventoryItems/CauldronProducts/BigGreenPotion/Big_Green_Potion.png" id="8_7kw5b"]
+[ext_resource type="Texture2D" uid="uid://c44i7cxfrpkaj" path="res://Objects/InventoryItems/CauldronProducts/DarkGreenPotion/Big_Green_Potion.png" id="8_7kw5b"]
 
 [sub_resource type="Resource" id="Resource_uxc6l"]
 script = ExtResource("6_qg47x")

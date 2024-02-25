@@ -1,11 +1,25 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://ce8dwxxudrfws"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=9 format=3 uid="uid://ce8dwxxudrfws"]
 
 [ext_resource type="Texture2D" uid="uid://ceo5orxou0lbx" path="res://Objects/InventoryItems/PentagramItems/Ritual4/ritual4_hover.png" id="1_ctiot"]
 [ext_resource type="Script" path="res://Inventory/inventory_item.gd" id="1_k41ub"]
+[ext_resource type="Resource" uid="uid://bdgc2khme13j" path="res://Objects/InventoryItems/ShelfItems/Twig/twig.tres" id="2_50usn"]
+[ext_resource type="Resource" uid="uid://cbbjdfdlifcfl" path="res://Objects/InventoryItems/ShelfItems/Ruby/ruby.tres" id="3_866df"]
 [ext_resource type="Texture2D" uid="uid://dkcq4qgqq3un2" path="res://Objects/InventoryItems/PentagramItems/Ritual4/ritual_4.png" id="3_e7uge"]
+[ext_resource type="Resource" uid="uid://da7nc6m3hb3ee" path="res://Objects/InventoryItems/ShelfItems/Paper/paper.tres" id="4_f4dvd"]
+[ext_resource type="Script" path="res://Inventory/recipe.gd" id="5_qx2d5"]
+
+[sub_resource type="Resource" id="Resource_8x2ei"]
+script = ExtResource("5_qx2d5")
+ingredients = {
+ExtResource("2_50usn"): 2,
+ExtResource("3_866df"): 1,
+ExtResource("4_f4dvd"): 1
+}
+name = "ritual4"
 
 [resource]
 script = ExtResource("1_k41ub")
 name = "ritual4"
 texture = ExtResource("3_e7uge")
 hover_texture = ExtResource("1_ctiot")
+recipe = SubResource("Resource_8x2ei")

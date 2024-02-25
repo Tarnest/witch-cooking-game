@@ -1,11 +1,27 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://bp77c1wyp6152"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=10 format=3 uid="uid://bp77c1wyp6152"]
 
 [ext_resource type="Script" path="res://Inventory/inventory_item.gd" id="1_gjxn1"]
 [ext_resource type="Texture2D" uid="uid://ch08ryaatxu3g" path="res://Objects/InventoryItems/PentagramItems/Ritual1/ritual1_hover.png" id="1_ugsp5"]
+[ext_resource type="Resource" uid="uid://b42gmdml8v8i5" path="res://Objects/InventoryItems/FarmItems/Rose/rose.tres" id="2_876s3"]
 [ext_resource type="Texture2D" uid="uid://cl17e2p4m4kth" path="res://Objects/InventoryItems/PentagramItems/Ritual1/ritual_1.png" id="3_48vmk"]
+[ext_resource type="Resource" uid="uid://cbbjdfdlifcfl" path="res://Objects/InventoryItems/ShelfItems/Ruby/ruby.tres" id="3_srh1y"]
+[ext_resource type="Resource" uid="uid://bkeu01d40i6i7" path="res://Objects/InventoryItems/FarmItems/Apple/apple.tres" id="4_2iqse"]
+[ext_resource type="Resource" uid="uid://ca6lj46p52oju" path="res://Objects/InventoryItems/ShelfItems/Tongue/tongue.tres" id="5_gclh7"]
+[ext_resource type="Script" path="res://Inventory/recipe.gd" id="6_q8bfy"]
+
+[sub_resource type="Resource" id="Resource_try07"]
+script = ExtResource("6_q8bfy")
+ingredients = {
+ExtResource("2_876s3"): 1,
+ExtResource("3_srh1y"): 1,
+ExtResource("4_2iqse"): 1,
+ExtResource("5_gclh7"): 1
+}
+name = "ritual1"
 
 [resource]
 script = ExtResource("1_gjxn1")
 name = "ritual1"
 texture = ExtResource("3_48vmk")
 hover_texture = ExtResource("1_ugsp5")
+recipe = SubResource("Resource_try07")
