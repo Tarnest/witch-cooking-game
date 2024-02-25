@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://f3l4nph5mj2y"]
+
+[ext_resource type="Script" path="res://Inventory/inventory_item.gd" id="1_s6vcy"]
+[ext_resource type="Texture2D" uid="uid://bx7rpddx0masl" path="res://Objects/InventoryItems/ShelfItems/Silver/silver_hover.png" id="1_suv5y"]
+[ext_resource type="Texture2D" uid="uid://o436881jbb0n" path="res://Objects/InventoryItems/ShelfItems/Silver/silver.png" id="3_u3rww"]
+
+[resource]
+script = ExtResource("1_s6vcy")
+name = "silver"
+texture = ExtResource("3_u3rww")
+hover_texture = ExtResource("1_suv5y")

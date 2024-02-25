@@ -10,7 +10,7 @@ signal spawn_customer
 var day_started = false
 var day = -1
 var day_customers = [10, 12, 14, 16, 18]
-var customer_amount
+var customer_amount = 1
 var day_time = 180
 var spawn_time = [16, 13, 11, 9, 8]
 var current_spawn_time

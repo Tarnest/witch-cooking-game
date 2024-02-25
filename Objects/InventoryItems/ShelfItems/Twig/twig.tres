@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://bdgc2khme13j"]
+
+[ext_resource type="Script" path="res://Inventory/inventory_item.gd" id="1_ccyks"]
+[ext_resource type="Texture2D" uid="uid://cof622i47as4" path="res://Objects/InventoryItems/ShelfItems/Twig/twig_hover.png" id="1_p040m"]
+[ext_resource type="Texture2D" uid="uid://cv88y1s326hnw" path="res://Objects/InventoryItems/ShelfItems/Twig/twig.png" id="2_jmus4"]
+
+[resource]
+script = ExtResource("1_ccyks")
+name = "tongue"
+texture = ExtResource("2_jmus4")
+hover_texture = ExtResource("1_p040m")

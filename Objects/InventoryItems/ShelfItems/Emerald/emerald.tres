@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://dlx6c0sxt563u"]
+
+[ext_resource type="Script" path="res://Inventory/inventory_item.gd" id="1_cd54i"]
+[ext_resource type="Texture2D" uid="uid://bh78yfv076xx2" path="res://Objects/InventoryItems/ShelfItems/Emerald/emerald_hover.png" id="1_np56d"]
+[ext_resource type="Texture2D" uid="uid://dyw0kismnc0fj" path="res://Objects/InventoryItems/ShelfItems/Emerald/emerald.png" id="2_8rolm"]
+
+[resource]
+script = ExtResource("1_cd54i")
+name = "emerald"
+texture = ExtResource("2_8rolm")
+hover_texture = ExtResource("1_np56d")

@@ -47,6 +47,7 @@ func _physics_process(_delta):
 		
 		if collider.is_in_group("Trash") && Input.is_action_just_pressed("open_menu"):
 			inventory.clear()
+			collider.animation.play("chomp")
 		
 		if collider.is_in_group("Customer") && Input.is_action_just_pressed("open_menu"):
 			if collider.current_state == collider.state.WAITING_TO_ORDER && orders_taken < max_orders:

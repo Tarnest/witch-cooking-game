@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://cbbjdfdlifcfl"]
+
+[ext_resource type="Texture2D" uid="uid://mxcje71vtjth" path="res://Objects/InventoryItems/ShelfItems/Ruby/ruby_hover.png" id="1_3isdy"]
+[ext_resource type="Script" path="res://Inventory/inventory_item.gd" id="2_qwayg"]
+[ext_resource type="Texture2D" uid="uid://crk4kk3qi0h3f" path="res://Objects/InventoryItems/ShelfItems/Ruby/ruby.png" id="3_wkydk"]
+
+[resource]
+script = ExtResource("2_qwayg")
+name = "ruby"
+texture = ExtResource("3_wkydk")
+hover_texture = ExtResource("1_3isdy")
