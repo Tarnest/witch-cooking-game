@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddrqe5ykd08ic"
-path="res://.godot/imported/pentagram.png-9ce45ebccd172a2cd47ddf0837c2b3b7.ctex"
+uid="uid://djqg1p3m5s2le"
+path="res://.godot/imported/alchemy_table.png-f40c12a803b1c5e6dbc913bb751b31ca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Objects/InteractableObjects/pentagram.png"
-dest_files=["res://.godot/imported/pentagram.png-9ce45ebccd172a2cd47ddf0837c2b3b7.ctex"]
+source_file="res://Objects/InteractableObjects/WorkTable/alchemy_table.png"
+dest_files=["res://.godot/imported/alchemy_table.png-f40c12a803b1c5e6dbc913bb751b31ca.ctex"]
 
 [params]
 

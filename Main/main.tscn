@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://k6sf5hm387vs"]
+[gd_scene load_steps=90 format=3 uid="uid://k6sf5hm387vs"]
 
 [ext_resource type="Script" path="res://Main/main.gd" id="1_ughty"]
 [ext_resource type="Texture2D" uid="uid://d1rh6mau1dyi5" path="res://Assets/FloorAndWalls/store_tilemap.png" id="2_vkgnn"]
@@ -51,8 +51,10 @@
 [ext_resource type="Texture2D" uid="uid://3pfvhn1vjq7p" path="res://Objects/InventoryItems/ShelfItems/Horn/horn_hover.png" id="45_eq7bs"]
 [ext_resource type="Script" path="res://Main/trash.gd" id="47_13sad"]
 [ext_resource type="Texture2D" uid="uid://duaosjkhwb7p3" path="res://Objects/InteractableObjects/Bell/bell.png" id="47_e6k8s"]
+[ext_resource type="Texture2D" uid="uid://djqg1p3m5s2le" path="res://Objects/InteractableObjects/WorkTable/alchemy_table.png" id="48_7ekqj"]
 [ext_resource type="Texture2D" uid="uid://cm600r3jqdjim" path="res://Objects/InteractableObjects/Trash/trashcan.png" id="48_vhyg6"]
 [ext_resource type="Texture2D" uid="uid://din5hmxv5dxw7" path="res://Objects/InteractableObjects/Bed/bed.png" id="49_dj04p"]
+[ext_resource type="Texture2D" uid="uid://ddrqe5ykd08ic" path="res://Objects/InteractableObjects/Pentagram/pentagram.png" id="49_igdmm"]
 [ext_resource type="Texture2D" uid="uid://cqmlykd5c45n3" path="res://Objects/InteractableObjects/Bed/table.png" id="50_7oucq"]
 [ext_resource type="Script" path="res://Objects/InteractableObjects/Farm/farm.gd" id="53_wpn1q"]
 [ext_resource type="Resource" uid="uid://b42gmdml8v8i5" path="res://Objects/InventoryItems/FarmItems/Rose/rose.tres" id="54_6a07u"]
@@ -266,6 +268,9 @@ size = Vector2(80, 31)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_acigl"]
 radius = 12.0
 height = 26.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lxb6x"]
+radius = 20.6155
 
 [sub_resource type="Animation" id="Animation_62sth"]
 length = 0.001
@@ -624,24 +629,28 @@ centered = false
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Objects/Counter"]
 polygon = PackedVector2Array(0, 41, 0, 8, 185, 8, 185, 41, 166, 41, 166, 17, 19, 17, 19, 41)
 
-[node name="Cauldron" type="StaticBody2D" parent="Objects" groups=["Container"]]
+[node name="CraftingObjects" type="Node2D" parent="Objects"]
+
+[node name="Cauldrons" type="Node2D" parent="Objects/CraftingObjects"]
+
+[node name="Cauldron" type="StaticBody2D" parent="Objects/CraftingObjects/Cauldrons" groups=["Container"]]
 texture_filter = 1
-position = Vector2(409, 166)
+position = Vector2(282, 292)
 collision_layer = 4
 script = ExtResource("3_jfxsh")
 
-[node name="Sprite2D" type="Sprite2D" parent="Objects/Cauldron"]
+[node name="Sprite2D" type="Sprite2D" parent="Objects/CraftingObjects/Cauldrons/Cauldron"]
 texture = ExtResource("8_agjks")
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Cauldron"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/CraftingObjects/Cauldrons/Cauldron"]
 shape = SubResource("CapsuleShape2D_acigl")
 metadata/_edit_lock_ = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Objects/Cauldron"]
+[node name="CanvasLayer" type="CanvasLayer" parent="Objects/CraftingObjects/Cauldrons/Cauldron"]
 script = ExtResource("6_hq43h")
 
-[node name="PanelContainer" type="PanelContainer" parent="Objects/Cauldron/CanvasLayer"]
+[node name="PanelContainer" type="PanelContainer" parent="Objects/CraftingObjects/Cauldrons/Cauldron/CanvasLayer"]
 visible = false
 offset_left = 1100.0
 offset_top = 100.0
@@ -650,14 +659,14 @@ offset_bottom = 900.0
 theme = ExtResource("20_mj0ge")
 script = ExtResource("7_8tn31")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Objects/Cauldron/CanvasLayer/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Objects/CraftingObjects/Cauldrons/Cauldron/CanvasLayer/PanelContainer"]
 layout_mode = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Objects/Cauldron/CanvasLayer/PanelContainer/VBoxContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Objects/CraftingObjects/Cauldrons/Cauldron/CanvasLayer/PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="Objects/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect"]
+[node name="GridContainer" type="GridContainer" parent="Objects/CraftingObjects/Cauldrons/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -672,29 +681,29 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 columns = 5
 
-[node name="UISlot" parent="Objects/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer" instance=ExtResource("8_602y7")]
+[node name="UISlot" parent="Objects/CraftingObjects/Cauldrons/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer" instance=ExtResource("8_602y7")]
 layout_mode = 2
 
-[node name="UISlot2" parent="Objects/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer" instance=ExtResource("8_602y7")]
+[node name="UISlot2" parent="Objects/CraftingObjects/Cauldrons/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer" instance=ExtResource("8_602y7")]
 layout_mode = 2
 
-[node name="UISlot3" parent="Objects/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer" instance=ExtResource("8_602y7")]
+[node name="UISlot3" parent="Objects/CraftingObjects/Cauldrons/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer" instance=ExtResource("8_602y7")]
 layout_mode = 2
 
-[node name="UISlot4" parent="Objects/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer" instance=ExtResource("8_602y7")]
+[node name="UISlot4" parent="Objects/CraftingObjects/Cauldrons/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer" instance=ExtResource("8_602y7")]
 layout_mode = 2
 
-[node name="UISlot5" parent="Objects/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer" instance=ExtResource("8_602y7")]
+[node name="UISlot5" parent="Objects/CraftingObjects/Cauldrons/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer" instance=ExtResource("8_602y7")]
 layout_mode = 2
 
-[node name="WhiteSpace" type="Control" parent="Objects/Cauldron/CanvasLayer/PanelContainer/VBoxContainer"]
+[node name="WhiteSpace" type="Control" parent="Objects/CraftingObjects/Cauldrons/Cauldron/CanvasLayer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ToCraft" type="NinePatchRect" parent="Objects/Cauldron/CanvasLayer/PanelContainer/VBoxContainer"]
+[node name="ToCraft" type="NinePatchRect" parent="Objects/CraftingObjects/Cauldrons/Cauldron/CanvasLayer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="Objects/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/ToCraft"]
+[node name="GridContainer" type="GridContainer" parent="Objects/CraftingObjects/Cauldrons/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/ToCraft"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -709,40 +718,533 @@ grow_horizontal = 2
 grow_vertical = 2
 columns = 5
 
-[node name="UISlot1" parent="Objects/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/ToCraft/GridContainer" instance=ExtResource("8_ghtnn")]
+[node name="UISlot1" parent="Objects/CraftingObjects/Cauldrons/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/ToCraft/GridContainer" instance=ExtResource("8_ghtnn")]
 visible = false
 layout_mode = 2
 
-[node name="UISlot2" parent="Objects/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/ToCraft/GridContainer" instance=ExtResource("8_ghtnn")]
+[node name="UISlot2" parent="Objects/CraftingObjects/Cauldrons/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/ToCraft/GridContainer" instance=ExtResource("8_ghtnn")]
 visible = false
 layout_mode = 2
 
-[node name="UISlot3" parent="Objects/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/ToCraft/GridContainer" instance=ExtResource("8_ghtnn")]
+[node name="UISlot3" parent="Objects/CraftingObjects/Cauldrons/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/ToCraft/GridContainer" instance=ExtResource("8_ghtnn")]
 visible = false
 layout_mode = 2
 
-[node name="UISlot4" parent="Objects/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/ToCraft/GridContainer" instance=ExtResource("8_ghtnn")]
+[node name="UISlot4" parent="Objects/CraftingObjects/Cauldrons/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/ToCraft/GridContainer" instance=ExtResource("8_ghtnn")]
 visible = false
 layout_mode = 2
 
-[node name="UISlot5" parent="Objects/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/ToCraft/GridContainer" instance=ExtResource("8_ghtnn")]
+[node name="UISlot5" parent="Objects/CraftingObjects/Cauldrons/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/ToCraft/GridContainer" instance=ExtResource("8_ghtnn")]
 visible = false
 layout_mode = 2
 
-[node name="WhiteSpace2" type="Control" parent="Objects/Cauldron/CanvasLayer/PanelContainer/VBoxContainer"]
+[node name="WhiteSpace2" type="Control" parent="Objects/CraftingObjects/Cauldrons/Cauldron/CanvasLayer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Objects/Cauldron/CanvasLayer/PanelContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Objects/CraftingObjects/Cauldrons/Cauldron/CanvasLayer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Close" type="Button" parent="Objects/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="Close" type="Button" parent="Objects/CraftingObjects/Cauldrons/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
 text = "Close"
 
-[node name="Confirm" type="Button" parent="Objects/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="Confirm" type="Button" parent="Objects/CraftingObjects/Cauldrons/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Confirm"
+
+[node name="Cauldron2" type="StaticBody2D" parent="Objects/CraftingObjects/Cauldrons" groups=["Container"]]
+texture_filter = 1
+position = Vector2(227, 290)
+collision_layer = 4
+script = ExtResource("3_jfxsh")
+
+[node name="Sprite2D" type="Sprite2D" parent="Objects/CraftingObjects/Cauldrons/Cauldron2"]
+texture = ExtResource("8_agjks")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/CraftingObjects/Cauldrons/Cauldron2"]
+shape = SubResource("CapsuleShape2D_acigl")
+metadata/_edit_lock_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Objects/CraftingObjects/Cauldrons/Cauldron2"]
+script = ExtResource("6_hq43h")
+
+[node name="PanelContainer" type="PanelContainer" parent="Objects/CraftingObjects/Cauldrons/Cauldron2/CanvasLayer"]
+visible = false
+offset_left = 1100.0
+offset_top = 100.0
+offset_right = 1900.0
+offset_bottom = 900.0
+theme = ExtResource("20_mj0ge")
+script = ExtResource("7_8tn31")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Objects/CraftingObjects/Cauldrons/Cauldron2/CanvasLayer/PanelContainer"]
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Objects/CraftingObjects/Cauldrons/Cauldron2/CanvasLayer/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Objects/CraftingObjects/Cauldrons/Cauldron2/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_right = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 5
+
+[node name="UISlot" parent="Objects/CraftingObjects/Cauldrons/Cauldron2/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer" instance=ExtResource("8_602y7")]
+layout_mode = 2
+
+[node name="UISlot2" parent="Objects/CraftingObjects/Cauldrons/Cauldron2/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer" instance=ExtResource("8_602y7")]
+layout_mode = 2
+
+[node name="UISlot3" parent="Objects/CraftingObjects/Cauldrons/Cauldron2/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer" instance=ExtResource("8_602y7")]
+layout_mode = 2
+
+[node name="UISlot4" parent="Objects/CraftingObjects/Cauldrons/Cauldron2/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer" instance=ExtResource("8_602y7")]
+layout_mode = 2
+
+[node name="UISlot5" parent="Objects/CraftingObjects/Cauldrons/Cauldron2/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer" instance=ExtResource("8_602y7")]
+layout_mode = 2
+
+[node name="WhiteSpace" type="Control" parent="Objects/CraftingObjects/Cauldrons/Cauldron2/CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ToCraft" type="NinePatchRect" parent="Objects/CraftingObjects/Cauldrons/Cauldron2/CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Objects/CraftingObjects/Cauldrons/Cauldron2/CanvasLayer/PanelContainer/VBoxContainer/ToCraft"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 5
+
+[node name="UISlot1" parent="Objects/CraftingObjects/Cauldrons/Cauldron2/CanvasLayer/PanelContainer/VBoxContainer/ToCraft/GridContainer" instance=ExtResource("8_ghtnn")]
+visible = false
+layout_mode = 2
+
+[node name="UISlot2" parent="Objects/CraftingObjects/Cauldrons/Cauldron2/CanvasLayer/PanelContainer/VBoxContainer/ToCraft/GridContainer" instance=ExtResource("8_ghtnn")]
+visible = false
+layout_mode = 2
+
+[node name="UISlot3" parent="Objects/CraftingObjects/Cauldrons/Cauldron2/CanvasLayer/PanelContainer/VBoxContainer/ToCraft/GridContainer" instance=ExtResource("8_ghtnn")]
+visible = false
+layout_mode = 2
+
+[node name="UISlot4" parent="Objects/CraftingObjects/Cauldrons/Cauldron2/CanvasLayer/PanelContainer/VBoxContainer/ToCraft/GridContainer" instance=ExtResource("8_ghtnn")]
+visible = false
+layout_mode = 2
+
+[node name="UISlot5" parent="Objects/CraftingObjects/Cauldrons/Cauldron2/CanvasLayer/PanelContainer/VBoxContainer/ToCraft/GridContainer" instance=ExtResource("8_ghtnn")]
+visible = false
+layout_mode = 2
+
+[node name="WhiteSpace2" type="Control" parent="Objects/CraftingObjects/Cauldrons/Cauldron2/CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Objects/CraftingObjects/Cauldrons/Cauldron2/CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Close" type="Button" parent="Objects/CraftingObjects/Cauldrons/Cauldron2/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+text = "Close"
+
+[node name="Confirm" type="Button" parent="Objects/CraftingObjects/Cauldrons/Cauldron2/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Confirm"
+
+[node name="Cauldron3" type="StaticBody2D" parent="Objects/CraftingObjects/Cauldrons" groups=["Container"]]
+texture_filter = 1
+position = Vector2(254, 238)
+collision_layer = 4
+script = ExtResource("3_jfxsh")
+
+[node name="Sprite2D" type="Sprite2D" parent="Objects/CraftingObjects/Cauldrons/Cauldron3"]
+texture = ExtResource("8_agjks")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/CraftingObjects/Cauldrons/Cauldron3"]
+shape = SubResource("CapsuleShape2D_acigl")
+metadata/_edit_lock_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Objects/CraftingObjects/Cauldrons/Cauldron3"]
+script = ExtResource("6_hq43h")
+
+[node name="PanelContainer" type="PanelContainer" parent="Objects/CraftingObjects/Cauldrons/Cauldron3/CanvasLayer"]
+visible = false
+offset_left = 1100.0
+offset_top = 100.0
+offset_right = 1900.0
+offset_bottom = 900.0
+theme = ExtResource("20_mj0ge")
+script = ExtResource("7_8tn31")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Objects/CraftingObjects/Cauldrons/Cauldron3/CanvasLayer/PanelContainer"]
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Objects/CraftingObjects/Cauldrons/Cauldron3/CanvasLayer/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Objects/CraftingObjects/Cauldrons/Cauldron3/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_right = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 5
+
+[node name="UISlot" parent="Objects/CraftingObjects/Cauldrons/Cauldron3/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer" instance=ExtResource("8_602y7")]
+layout_mode = 2
+
+[node name="UISlot2" parent="Objects/CraftingObjects/Cauldrons/Cauldron3/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer" instance=ExtResource("8_602y7")]
+layout_mode = 2
+
+[node name="UISlot3" parent="Objects/CraftingObjects/Cauldrons/Cauldron3/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer" instance=ExtResource("8_602y7")]
+layout_mode = 2
+
+[node name="UISlot4" parent="Objects/CraftingObjects/Cauldrons/Cauldron3/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer" instance=ExtResource("8_602y7")]
+layout_mode = 2
+
+[node name="UISlot5" parent="Objects/CraftingObjects/Cauldrons/Cauldron3/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer" instance=ExtResource("8_602y7")]
+layout_mode = 2
+
+[node name="WhiteSpace" type="Control" parent="Objects/CraftingObjects/Cauldrons/Cauldron3/CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ToCraft" type="NinePatchRect" parent="Objects/CraftingObjects/Cauldrons/Cauldron3/CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Objects/CraftingObjects/Cauldrons/Cauldron3/CanvasLayer/PanelContainer/VBoxContainer/ToCraft"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 5
+
+[node name="UISlot1" parent="Objects/CraftingObjects/Cauldrons/Cauldron3/CanvasLayer/PanelContainer/VBoxContainer/ToCraft/GridContainer" instance=ExtResource("8_ghtnn")]
+visible = false
+layout_mode = 2
+
+[node name="UISlot2" parent="Objects/CraftingObjects/Cauldrons/Cauldron3/CanvasLayer/PanelContainer/VBoxContainer/ToCraft/GridContainer" instance=ExtResource("8_ghtnn")]
+visible = false
+layout_mode = 2
+
+[node name="UISlot3" parent="Objects/CraftingObjects/Cauldrons/Cauldron3/CanvasLayer/PanelContainer/VBoxContainer/ToCraft/GridContainer" instance=ExtResource("8_ghtnn")]
+visible = false
+layout_mode = 2
+
+[node name="UISlot4" parent="Objects/CraftingObjects/Cauldrons/Cauldron3/CanvasLayer/PanelContainer/VBoxContainer/ToCraft/GridContainer" instance=ExtResource("8_ghtnn")]
+visible = false
+layout_mode = 2
+
+[node name="UISlot5" parent="Objects/CraftingObjects/Cauldrons/Cauldron3/CanvasLayer/PanelContainer/VBoxContainer/ToCraft/GridContainer" instance=ExtResource("8_ghtnn")]
+visible = false
+layout_mode = 2
+
+[node name="WhiteSpace2" type="Control" parent="Objects/CraftingObjects/Cauldrons/Cauldron3/CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Objects/CraftingObjects/Cauldrons/Cauldron3/CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Close" type="Button" parent="Objects/CraftingObjects/Cauldrons/Cauldron3/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+text = "Close"
+
+[node name="Confirm" type="Button" parent="Objects/CraftingObjects/Cauldrons/Cauldron3/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Confirm"
+
+[node name="WorkTable" type="StaticBody2D" parent="Objects/CraftingObjects" groups=["Container"]]
+texture_filter = 1
+position = Vector2(429, 283)
+collision_layer = 4
+script = ExtResource("3_jfxsh")
+
+[node name="Sprite2D" type="Sprite2D" parent="Objects/CraftingObjects/WorkTable"]
+texture = ExtResource("48_7ekqj")
+metadata/_edit_lock_ = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Objects/CraftingObjects/WorkTable"]
+polygon = PackedVector2Array(-50, -3, -50, 37, 51, 37, 51, -37, 20, -37, 20, -3)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Objects/CraftingObjects/WorkTable"]
+script = ExtResource("6_hq43h")
+
+[node name="PanelContainer" type="PanelContainer" parent="Objects/CraftingObjects/WorkTable/CanvasLayer"]
+visible = false
+offset_left = 1100.0
+offset_top = 100.0
+offset_right = 1900.0
+offset_bottom = 900.0
+theme = ExtResource("20_mj0ge")
+script = ExtResource("7_8tn31")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Objects/CraftingObjects/WorkTable/CanvasLayer/PanelContainer"]
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Objects/CraftingObjects/WorkTable/CanvasLayer/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Objects/CraftingObjects/WorkTable/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_right = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 5
+
+[node name="UISlot" parent="Objects/CraftingObjects/WorkTable/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer" instance=ExtResource("8_602y7")]
+layout_mode = 2
+
+[node name="UISlot2" parent="Objects/CraftingObjects/WorkTable/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer" instance=ExtResource("8_602y7")]
+layout_mode = 2
+
+[node name="UISlot3" parent="Objects/CraftingObjects/WorkTable/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer" instance=ExtResource("8_602y7")]
+layout_mode = 2
+
+[node name="UISlot4" parent="Objects/CraftingObjects/WorkTable/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer" instance=ExtResource("8_602y7")]
+layout_mode = 2
+
+[node name="UISlot5" parent="Objects/CraftingObjects/WorkTable/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer" instance=ExtResource("8_602y7")]
+layout_mode = 2
+
+[node name="WhiteSpace" type="Control" parent="Objects/CraftingObjects/WorkTable/CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ToCraft" type="NinePatchRect" parent="Objects/CraftingObjects/WorkTable/CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Objects/CraftingObjects/WorkTable/CanvasLayer/PanelContainer/VBoxContainer/ToCraft"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 5
+
+[node name="UISlot1" parent="Objects/CraftingObjects/WorkTable/CanvasLayer/PanelContainer/VBoxContainer/ToCraft/GridContainer" instance=ExtResource("8_ghtnn")]
+visible = false
+layout_mode = 2
+
+[node name="UISlot2" parent="Objects/CraftingObjects/WorkTable/CanvasLayer/PanelContainer/VBoxContainer/ToCraft/GridContainer" instance=ExtResource("8_ghtnn")]
+visible = false
+layout_mode = 2
+
+[node name="UISlot3" parent="Objects/CraftingObjects/WorkTable/CanvasLayer/PanelContainer/VBoxContainer/ToCraft/GridContainer" instance=ExtResource("8_ghtnn")]
+visible = false
+layout_mode = 2
+
+[node name="UISlot4" parent="Objects/CraftingObjects/WorkTable/CanvasLayer/PanelContainer/VBoxContainer/ToCraft/GridContainer" instance=ExtResource("8_ghtnn")]
+visible = false
+layout_mode = 2
+
+[node name="UISlot5" parent="Objects/CraftingObjects/WorkTable/CanvasLayer/PanelContainer/VBoxContainer/ToCraft/GridContainer" instance=ExtResource("8_ghtnn")]
+visible = false
+layout_mode = 2
+
+[node name="WhiteSpace2" type="Control" parent="Objects/CraftingObjects/WorkTable/CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Objects/CraftingObjects/WorkTable/CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Close" type="Button" parent="Objects/CraftingObjects/WorkTable/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+text = "Close"
+
+[node name="Confirm" type="Button" parent="Objects/CraftingObjects/WorkTable/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Confirm"
+
+[node name="Pentagram" type="Area2D" parent="Objects/CraftingObjects" groups=["Container", "Pentagram"]]
+z_index = -1
+texture_filter = 1
+position = Vector2(-101, -78)
+collision_layer = 4
+script = ExtResource("3_jfxsh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/CraftingObjects/Pentagram"]
+position = Vector2(430, 281)
+shape = SubResource("CircleShape2D_lxb6x")
+
+[node name="Sprite2D" type="Sprite2D" parent="Objects/CraftingObjects/Pentagram"]
+position = Vector2(429, 283)
+texture = ExtResource("49_igdmm")
+metadata/_edit_lock_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Objects/CraftingObjects/Pentagram"]
+script = ExtResource("6_hq43h")
+
+[node name="PanelContainer" type="PanelContainer" parent="Objects/CraftingObjects/Pentagram/CanvasLayer"]
+visible = false
+offset_left = 1100.0
+offset_top = 100.0
+offset_right = 1900.0
+offset_bottom = 900.0
+theme = ExtResource("20_mj0ge")
+script = ExtResource("7_8tn31")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Objects/CraftingObjects/Pentagram/CanvasLayer/PanelContainer"]
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Objects/CraftingObjects/Pentagram/CanvasLayer/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Objects/CraftingObjects/Pentagram/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_right = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 5
+
+[node name="UISlot" parent="Objects/CraftingObjects/Pentagram/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer" instance=ExtResource("8_602y7")]
+layout_mode = 2
+
+[node name="UISlot2" parent="Objects/CraftingObjects/Pentagram/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer" instance=ExtResource("8_602y7")]
+layout_mode = 2
+
+[node name="UISlot3" parent="Objects/CraftingObjects/Pentagram/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer" instance=ExtResource("8_602y7")]
+layout_mode = 2
+
+[node name="UISlot4" parent="Objects/CraftingObjects/Pentagram/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer" instance=ExtResource("8_602y7")]
+layout_mode = 2
+
+[node name="UISlot5" parent="Objects/CraftingObjects/Pentagram/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer" instance=ExtResource("8_602y7")]
+layout_mode = 2
+
+[node name="WhiteSpace" type="Control" parent="Objects/CraftingObjects/Pentagram/CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ToCraft" type="NinePatchRect" parent="Objects/CraftingObjects/Pentagram/CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Objects/CraftingObjects/Pentagram/CanvasLayer/PanelContainer/VBoxContainer/ToCraft"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 5
+
+[node name="UISlot1" parent="Objects/CraftingObjects/Pentagram/CanvasLayer/PanelContainer/VBoxContainer/ToCraft/GridContainer" instance=ExtResource("8_ghtnn")]
+visible = false
+layout_mode = 2
+
+[node name="UISlot2" parent="Objects/CraftingObjects/Pentagram/CanvasLayer/PanelContainer/VBoxContainer/ToCraft/GridContainer" instance=ExtResource("8_ghtnn")]
+visible = false
+layout_mode = 2
+
+[node name="UISlot3" parent="Objects/CraftingObjects/Pentagram/CanvasLayer/PanelContainer/VBoxContainer/ToCraft/GridContainer" instance=ExtResource("8_ghtnn")]
+visible = false
+layout_mode = 2
+
+[node name="UISlot4" parent="Objects/CraftingObjects/Pentagram/CanvasLayer/PanelContainer/VBoxContainer/ToCraft/GridContainer" instance=ExtResource("8_ghtnn")]
+visible = false
+layout_mode = 2
+
+[node name="UISlot5" parent="Objects/CraftingObjects/Pentagram/CanvasLayer/PanelContainer/VBoxContainer/ToCraft/GridContainer" instance=ExtResource("8_ghtnn")]
+visible = false
+layout_mode = 2
+
+[node name="WhiteSpace2" type="Control" parent="Objects/CraftingObjects/Pentagram/CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Objects/CraftingObjects/Pentagram/CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Close" type="Button" parent="Objects/CraftingObjects/Pentagram/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+text = "Close"
+
+[node name="Confirm" type="Button" parent="Objects/CraftingObjects/Pentagram/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Confirm"
@@ -1246,17 +1748,60 @@ autoplay = true
 [connection signal="pressed" from="Objects/RightShelf/CanvasLayer/PanelContainer/VBoxContainer/GridContainer/Horn" to="Objects/RightShelf/CanvasLayer/PanelContainer" method="_on_ruby_pressed"]
 [connection signal="pressed" from="Objects/RightShelf/CanvasLayer/PanelContainer/VBoxContainer/Close" to="Objects/RightShelf" method="_on_close_pressed"]
 [connection signal="pressed" from="Objects/RightShelf/CanvasLayer/PanelContainer/VBoxContainer/Close" to="Objects/RightShelf/CanvasLayer" method="_on_close_pressed"]
-[connection signal="add_item_to_pot" from="Objects/Cauldron" to="Objects/Cauldron/CanvasLayer/PanelContainer" method="_on_cauldron_add_item_to_pot"]
-[connection signal="open_menu" from="Objects/Cauldron" to="Objects/Cauldron/CanvasLayer" method="_on_open"]
-[connection signal="use" from="Objects/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer/UISlot" to="Objects/Cauldron" method="use_item"]
-[connection signal="use" from="Objects/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer/UISlot2" to="Objects/Cauldron" method="use_item"]
-[connection signal="use" from="Objects/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer/UISlot3" to="Objects/Cauldron" method="use_item"]
-[connection signal="use" from="Objects/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer/UISlot4" to="Objects/Cauldron" method="use_item"]
-[connection signal="use" from="Objects/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer/UISlot5" to="Objects/Cauldron" method="use_item"]
-[connection signal="pressed" from="Objects/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/Close" to="Objects/Cauldron" method="_on_close_pressed"]
-[connection signal="pressed" from="Objects/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/Close" to="Objects/Cauldron/CanvasLayer" method="_on_close_pressed"]
-[connection signal="pressed" from="Objects/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/Confirm" to="Objects/Cauldron" method="_on_confirm_pressed"]
-[connection signal="pressed" from="Objects/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/Confirm" to="Objects/Cauldron/CanvasLayer/PanelContainer" method="_on_confirm_pressed"]
+[connection signal="add_item_to_pot" from="Objects/CraftingObjects/Cauldrons/Cauldron" to="Objects/CraftingObjects/Cauldrons/Cauldron/CanvasLayer/PanelContainer" method="_on_cauldron_add_item_to_pot"]
+[connection signal="open_menu" from="Objects/CraftingObjects/Cauldrons/Cauldron" to="Objects/CraftingObjects/Cauldrons/Cauldron/CanvasLayer" method="_on_open"]
+[connection signal="use" from="Objects/CraftingObjects/Cauldrons/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer/UISlot" to="Objects/CraftingObjects/Cauldrons/Cauldron" method="use_item"]
+[connection signal="use" from="Objects/CraftingObjects/Cauldrons/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer/UISlot2" to="Objects/CraftingObjects/Cauldrons/Cauldron" method="use_item"]
+[connection signal="use" from="Objects/CraftingObjects/Cauldrons/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer/UISlot3" to="Objects/CraftingObjects/Cauldrons/Cauldron" method="use_item"]
+[connection signal="use" from="Objects/CraftingObjects/Cauldrons/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer/UISlot4" to="Objects/CraftingObjects/Cauldrons/Cauldron" method="use_item"]
+[connection signal="use" from="Objects/CraftingObjects/Cauldrons/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer/UISlot5" to="Objects/CraftingObjects/Cauldrons/Cauldron" method="use_item"]
+[connection signal="pressed" from="Objects/CraftingObjects/Cauldrons/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/Close" to="Objects/CraftingObjects/Cauldrons/Cauldron" method="_on_close_pressed"]
+[connection signal="pressed" from="Objects/CraftingObjects/Cauldrons/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/Close" to="Objects/CraftingObjects/Cauldrons/Cauldron/CanvasLayer" method="_on_close_pressed"]
+[connection signal="pressed" from="Objects/CraftingObjects/Cauldrons/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/Confirm" to="Objects/CraftingObjects/Cauldrons/Cauldron" method="_on_confirm_pressed"]
+[connection signal="pressed" from="Objects/CraftingObjects/Cauldrons/Cauldron/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/Confirm" to="Objects/CraftingObjects/Cauldrons/Cauldron/CanvasLayer/PanelContainer" method="_on_confirm_pressed"]
+[connection signal="add_item_to_pot" from="Objects/CraftingObjects/Cauldrons/Cauldron2" to="Objects/CraftingObjects/Cauldrons/Cauldron2/CanvasLayer/PanelContainer" method="_on_cauldron_add_item_to_pot"]
+[connection signal="open_menu" from="Objects/CraftingObjects/Cauldrons/Cauldron2" to="Objects/CraftingObjects/Cauldrons/Cauldron2/CanvasLayer" method="_on_open"]
+[connection signal="use" from="Objects/CraftingObjects/Cauldrons/Cauldron2/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer/UISlot" to="Objects/CraftingObjects/Cauldrons/Cauldron2" method="use_item"]
+[connection signal="use" from="Objects/CraftingObjects/Cauldrons/Cauldron2/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer/UISlot2" to="Objects/CraftingObjects/Cauldrons/Cauldron2" method="use_item"]
+[connection signal="use" from="Objects/CraftingObjects/Cauldrons/Cauldron2/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer/UISlot3" to="Objects/CraftingObjects/Cauldrons/Cauldron2" method="use_item"]
+[connection signal="use" from="Objects/CraftingObjects/Cauldrons/Cauldron2/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer/UISlot4" to="Objects/CraftingObjects/Cauldrons/Cauldron2" method="use_item"]
+[connection signal="use" from="Objects/CraftingObjects/Cauldrons/Cauldron2/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer/UISlot5" to="Objects/CraftingObjects/Cauldrons/Cauldron2" method="use_item"]
+[connection signal="pressed" from="Objects/CraftingObjects/Cauldrons/Cauldron2/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/Close" to="Objects/CraftingObjects/Cauldrons/Cauldron2" method="_on_close_pressed"]
+[connection signal="pressed" from="Objects/CraftingObjects/Cauldrons/Cauldron2/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/Close" to="Objects/CraftingObjects/Cauldrons/Cauldron2/CanvasLayer" method="_on_close_pressed"]
+[connection signal="pressed" from="Objects/CraftingObjects/Cauldrons/Cauldron2/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/Confirm" to="Objects/CraftingObjects/Cauldrons/Cauldron2" method="_on_confirm_pressed"]
+[connection signal="pressed" from="Objects/CraftingObjects/Cauldrons/Cauldron2/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/Confirm" to="Objects/CraftingObjects/Cauldrons/Cauldron2/CanvasLayer/PanelContainer" method="_on_confirm_pressed"]
+[connection signal="add_item_to_pot" from="Objects/CraftingObjects/Cauldrons/Cauldron3" to="Objects/CraftingObjects/Cauldrons/Cauldron3/CanvasLayer/PanelContainer" method="_on_cauldron_add_item_to_pot"]
+[connection signal="open_menu" from="Objects/CraftingObjects/Cauldrons/Cauldron3" to="Objects/CraftingObjects/Cauldrons/Cauldron3/CanvasLayer" method="_on_open"]
+[connection signal="use" from="Objects/CraftingObjects/Cauldrons/Cauldron3/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer/UISlot" to="Objects/CraftingObjects/Cauldrons/Cauldron3" method="use_item"]
+[connection signal="use" from="Objects/CraftingObjects/Cauldrons/Cauldron3/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer/UISlot2" to="Objects/CraftingObjects/Cauldrons/Cauldron3" method="use_item"]
+[connection signal="use" from="Objects/CraftingObjects/Cauldrons/Cauldron3/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer/UISlot3" to="Objects/CraftingObjects/Cauldrons/Cauldron3" method="use_item"]
+[connection signal="use" from="Objects/CraftingObjects/Cauldrons/Cauldron3/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer/UISlot4" to="Objects/CraftingObjects/Cauldrons/Cauldron3" method="use_item"]
+[connection signal="use" from="Objects/CraftingObjects/Cauldrons/Cauldron3/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer/UISlot5" to="Objects/CraftingObjects/Cauldrons/Cauldron3" method="use_item"]
+[connection signal="pressed" from="Objects/CraftingObjects/Cauldrons/Cauldron3/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/Close" to="Objects/CraftingObjects/Cauldrons/Cauldron3" method="_on_close_pressed"]
+[connection signal="pressed" from="Objects/CraftingObjects/Cauldrons/Cauldron3/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/Close" to="Objects/CraftingObjects/Cauldrons/Cauldron3/CanvasLayer" method="_on_close_pressed"]
+[connection signal="pressed" from="Objects/CraftingObjects/Cauldrons/Cauldron3/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/Confirm" to="Objects/CraftingObjects/Cauldrons/Cauldron3" method="_on_confirm_pressed"]
+[connection signal="pressed" from="Objects/CraftingObjects/Cauldrons/Cauldron3/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/Confirm" to="Objects/CraftingObjects/Cauldrons/Cauldron3/CanvasLayer/PanelContainer" method="_on_confirm_pressed"]
+[connection signal="add_item_to_pot" from="Objects/CraftingObjects/WorkTable" to="Objects/CraftingObjects/WorkTable/CanvasLayer/PanelContainer" method="_on_cauldron_add_item_to_pot"]
+[connection signal="open_menu" from="Objects/CraftingObjects/WorkTable" to="Objects/CraftingObjects/WorkTable/CanvasLayer" method="_on_open"]
+[connection signal="use" from="Objects/CraftingObjects/WorkTable/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer/UISlot" to="Objects/CraftingObjects/WorkTable" method="use_item"]
+[connection signal="use" from="Objects/CraftingObjects/WorkTable/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer/UISlot2" to="Objects/CraftingObjects/WorkTable" method="use_item"]
+[connection signal="use" from="Objects/CraftingObjects/WorkTable/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer/UISlot3" to="Objects/CraftingObjects/WorkTable" method="use_item"]
+[connection signal="use" from="Objects/CraftingObjects/WorkTable/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer/UISlot4" to="Objects/CraftingObjects/WorkTable" method="use_item"]
+[connection signal="use" from="Objects/CraftingObjects/WorkTable/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer/UISlot5" to="Objects/CraftingObjects/WorkTable" method="use_item"]
+[connection signal="pressed" from="Objects/CraftingObjects/WorkTable/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/Close" to="Objects/CraftingObjects/WorkTable" method="_on_close_pressed"]
+[connection signal="pressed" from="Objects/CraftingObjects/WorkTable/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/Close" to="Objects/CraftingObjects/WorkTable/CanvasLayer" method="_on_close_pressed"]
+[connection signal="pressed" from="Objects/CraftingObjects/WorkTable/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/Confirm" to="Objects/CraftingObjects/WorkTable" method="_on_confirm_pressed"]
+[connection signal="pressed" from="Objects/CraftingObjects/WorkTable/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/Confirm" to="Objects/CraftingObjects/WorkTable/CanvasLayer/PanelContainer" method="_on_confirm_pressed"]
+[connection signal="add_item_to_pot" from="Objects/CraftingObjects/Pentagram" to="Objects/CraftingObjects/Pentagram/CanvasLayer/PanelContainer" method="_on_cauldron_add_item_to_pot"]
+[connection signal="open_menu" from="Objects/CraftingObjects/Pentagram" to="Objects/CraftingObjects/Pentagram/CanvasLayer" method="_on_open"]
+[connection signal="use" from="Objects/CraftingObjects/Pentagram/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer/UISlot" to="Objects/CraftingObjects/Pentagram" method="use_item"]
+[connection signal="use" from="Objects/CraftingObjects/Pentagram/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer/UISlot2" to="Objects/CraftingObjects/Pentagram" method="use_item"]
+[connection signal="use" from="Objects/CraftingObjects/Pentagram/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer/UISlot3" to="Objects/CraftingObjects/Pentagram" method="use_item"]
+[connection signal="use" from="Objects/CraftingObjects/Pentagram/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer/UISlot4" to="Objects/CraftingObjects/Pentagram" method="use_item"]
+[connection signal="use" from="Objects/CraftingObjects/Pentagram/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/GridContainer/UISlot5" to="Objects/CraftingObjects/Pentagram" method="use_item"]
+[connection signal="pressed" from="Objects/CraftingObjects/Pentagram/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/Close" to="Objects/CraftingObjects/Pentagram" method="_on_close_pressed"]
+[connection signal="pressed" from="Objects/CraftingObjects/Pentagram/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/Close" to="Objects/CraftingObjects/Pentagram/CanvasLayer" method="_on_close_pressed"]
+[connection signal="pressed" from="Objects/CraftingObjects/Pentagram/CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/Confirm" to="Objects/CraftingObjects/Pentagram/CanvasLayer/PanelContainer" method="_on_confirm_pressed"]
 [connection signal="end_day" from="Player" to="." method="_on_player_end_day"]
 [connection signal="start_day" from="Player" to="." method="_on_player_start_day"]
 [connection signal="timeout" from="CanvasLayer/GameOver/Timer" to="." method="_on_game_over_timer_timeout"]

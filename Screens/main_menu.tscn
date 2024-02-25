@@ -106,6 +106,7 @@ pitch_scale = 0.8
 autoplay = true
 
 [node name="close_button" type="TextureButton" parent="."]
+texture_filter = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -116,7 +117,7 @@ offset_bottom = 217.0
 grow_horizontal = 0
 texture_normal = ExtResource("7_n836x")
 texture_hover = ExtResource("8_e6rmx")
-stretch_mode = 0
+stretch_mode = 3
 flip_h = true
 
 [connection signal="pressed" from="start_button" to="." method="_on_start_button_pressed"]
