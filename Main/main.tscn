@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://k6sf5hm387vs"]
+[gd_scene load_steps=93 format=3 uid="uid://k6sf5hm387vs"]
 
 [ext_resource type="Script" path="res://Main/main.gd" id="1_ughty"]
 [ext_resource type="Texture2D" uid="uid://d1rh6mau1dyi5" path="res://Assets/FloorAndWalls/store_tilemap.png" id="2_vkgnn"]
@@ -11,10 +11,12 @@
 [ext_resource type="Texture2D" uid="uid://dk685qnxk8nwa" path="res://Objects/InventoryItems/ShelfItems/Eyeball/eyeball.png" id="6_a08v1"]
 [ext_resource type="Script" path="res://Main/UIController.gd" id="6_hq43h"]
 [ext_resource type="Script" path="res://Objects/shelf_panel.gd" id="6_ks1wo"]
+[ext_resource type="Texture2D" uid="uid://b03i7xf0wnc5m" path="res://Assets/FloorAndWalls/books.png" id="6_lklyd"]
 [ext_resource type="Script" path="res://Objects/CraftingObjects/crafting_panel.gd" id="7_8tn31"]
 [ext_resource type="PackedScene" uid="uid://bu128t15480m6" path="res://Objects/CraftingObjects/crafting_ui_slot.tscn" id="8_602y7"]
 [ext_resource type="Texture2D" uid="uid://bi4i68nugg2u1" path="res://Objects/InteractableObjects/Cauldron/Cauldron.png" id="8_agjks"]
 [ext_resource type="PackedScene" uid="uid://do1tx2hywbbsp" path="res://Objects/CraftingObjects/crafting_ui_slot_ready.tscn" id="8_ghtnn"]
+[ext_resource type="Texture2D" uid="uid://cmi1byaoqriab" path="res://Assets/FloorAndWalls/library_UI.png" id="12_2e1hu"]
 [ext_resource type="Texture2D" uid="uid://dqdn7qqrikhyp" path="res://Objects/InventoryItems/ShelfItems/Limestone/limestone.png" id="14_vh5wy"]
 [ext_resource type="Texture2D" uid="uid://crk4kk3qi0h3f" path="res://Objects/InventoryItems/ShelfItems/Ruby/ruby.png" id="14_x07f8"]
 [ext_resource type="Texture2D" uid="uid://b6byw6i4mem7y" path="res://Objects/InventoryItems/ShelfItems/Eyeball/eyeball_hover.png" id="15_8fr8x"]
@@ -260,11 +262,11 @@ texture = ExtResource("2_vkgnn")
 physics_layer_0/collision_layer = 2
 sources/0 = SubResource("TileSetAtlasSource_mailf")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_md5uq"]
-size = Vector2(80, 30)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p5qlg"]
 size = Vector2(80, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_md5uq"]
+size = Vector2(80, 30)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_acigl"]
 radius = 12.0
@@ -429,6 +431,64 @@ z_index = -1
 texture_filter = 1
 position = Vector2(320, 149)
 texture = ExtResource("5_bamhh")
+
+[node name="Books" type="Sprite2D" parent="Objects"]
+z_index = -1
+texture_filter = 1
+position = Vector2(590, 113)
+texture = ExtResource("6_lklyd")
+
+[node name="BookShelf" type="StaticBody2D" parent="Objects" groups=["Container"]]
+texture_filter = 1
+position = Vector2(589, 113)
+collision_layer = 32
+script = ExtResource("4_qnvxi")
+player_inventory = ExtResource("4_2wowl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/BookShelf"]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_p5qlg")
+metadata/_edit_lock_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Objects/BookShelf"]
+script = ExtResource("6_hq43h")
+
+[node name="PanelContainer" type="PanelContainer" parent="Objects/BookShelf/CanvasLayer"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -480.0
+offset_top = -270.0
+offset_right = 480.0
+offset_bottom = 270.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("20_mj0ge")
+script = ExtResource("6_ks1wo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Objects/BookShelf/CanvasLayer/PanelContainer"]
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Objects/BookShelf/CanvasLayer/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(960, 540)
+layout_mode = 2
+texture = ExtResource("12_2e1hu")
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="Close" type="Button" parent="Objects/BookShelf/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 398.0
+offset_top = 490.0
+offset_right = 548.0
+offset_bottom = 515.0
+size_flags_vertical = 8
+text = "Close"
+flat = true
 
 [node name="LeftShelf" type="StaticBody2D" parent="Objects" groups=["Container"]]
 texture_filter = 1
@@ -1731,6 +1791,10 @@ autoplay = true
 [connection signal="spawn_customer" from="." to="Customers" method="_on_spawn_customer"]
 [connection signal="customer_left" from="Customers" to="." method="_on_customers_customer_left"]
 [connection signal="timeout" from="Customers/SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="open_menu" from="Objects/BookShelf" to="Objects/BookShelf/CanvasLayer" method="_on_open"]
+[connection signal="button_clicked" from="Objects/BookShelf/CanvasLayer/PanelContainer" to="Objects/BookShelf" method="_on_panel_container_button_clicked"]
+[connection signal="pressed" from="Objects/BookShelf/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/Close" to="Objects/BookShelf" method="_on_close_pressed"]
+[connection signal="pressed" from="Objects/BookShelf/CanvasLayer/PanelContainer/VBoxContainer/NinePatchRect/Close" to="Objects/BookShelf/CanvasLayer" method="_on_close_pressed"]
 [connection signal="open_menu" from="Objects/LeftShelf" to="Objects/LeftShelf/CanvasLayer" method="_on_open"]
 [connection signal="button_clicked" from="Objects/LeftShelf/CanvasLayer/PanelContainer" to="Objects/LeftShelf" method="_on_panel_container_button_clicked"]
 [connection signal="pressed" from="Objects/LeftShelf/CanvasLayer/PanelContainer/VBoxContainer/GridContainer/Limestone" to="Objects/LeftShelf/CanvasLayer/PanelContainer" method="_on_limestone_pressed"]
