@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Screens/win_screen.gd" id="1_tqlt4"]
 [ext_resource type="Texture2D" uid="uid://dlpfq8ljg2w8r" path="res://Assets/Menu/you_win.png" id="2_gki4u"]
 [ext_resource type="Theme" uid="uid://di1s2ewmo5emu" path="res://Assets/main_ui.tres" id="3_miv4v"]
-[ext_resource type="AudioStream" uid="uid://ds3qn0r8hi00m" path="res://Assets/Menu/game_over_3.mp3" id="4_imwjh"]
+[ext_resource type="AudioStream" uid="uid://c5s71erdcudcx" path="res://Screens/winscreen.wav" id="4_evrc4"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_tqlt4")
@@ -57,9 +57,8 @@ vertical_alignment = 1
 wait_time = 0.6
 autostart = true
 
-[node name="you_win_music" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_imwjh")
-pitch_scale = 1.5
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_evrc4")
 autoplay = true
 
 [connection signal="timeout" from="exit_timer" to="." method="_on_exit_timer_timeout"]

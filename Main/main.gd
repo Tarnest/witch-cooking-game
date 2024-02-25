@@ -11,13 +11,11 @@ var day_started = false
 var day = -1
 var day_customers = [10, 12, 14, 16, 18]
 var customer_amount = 1
-var day_time = 180
-var spawn_time = [3, 13, 11, 9, 8]
+var day_time = 300
+var spawn_time = [20, 13, 11, 9, 8]
 var current_spawn_time
 
 func _process(_delta):
-	if Input.is_action_pressed("escape_game"):
-		get_tree().quit()
 	if day_started:
 		time_update()
 		if customer_amount < 1 && customers.get_child_count() == 1:
@@ -41,9 +39,8 @@ func _on_player_end_day():
 	if customer_amount < 1 && customers.get_child_count() == 1:
 		day_started = false
 		countdown_label.visible = false
-	if day == 5:
-		get_tree().change_scene_to_file("res://Screens/win_screen.tscn")
-
+		if day == 1:
+			get_tree().change_scene_to_file("res://Screens/win_screen.tscn")
 func _on_spawn_timer_timeout():
 	if customer_amount > 0:
 		spawn_customer.emit()

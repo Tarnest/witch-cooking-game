@@ -1689,9 +1689,9 @@ libraries = {
 [node name="Timer" type="Timer" parent="Objects/Farm/Tulip/Plant3"]
 
 [node name="Player" parent="." instance=ExtResource("3_dwiu7")]
-position = Vector2(307, 220)
+position = Vector2(590, 228)
 collision_mask = 22
-speed = 100
+speed = 125
 ray_length = 20
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -1710,6 +1710,7 @@ navigation_polygon = SubResource("NavigationPolygon_6mie0")
 wait_time = 180.0
 
 [node name="Label" type="Label" parent="CanvasLayer/GameOver"]
+visible = false
 texture_filter = 1
 anchors_preset = 1
 anchor_left = 1.0
